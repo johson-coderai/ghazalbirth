@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d0b1f">
+<title>تولدت مبارک غزل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff9ec7;--lilac:#b79cff;--navy:#0d0b1f;--gold:#ffd98a}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#07061a;overflow:hidden}
+body{font-family:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;color:#fff;user-select:none;-webkit-user-select:none}
+textarea,input{font-family:inherit;user-select:text;-webkit-user-select:text}
+.stage{--u:min(1vw,.5625dvh);position:relative;height:100dvh;width:min(100vw,calc(100dvh*9/16));margin:0 auto;overflow:hidden;overflow:clip;background:var(--navy);font-size:calc(var(--u)*4)}
+.scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .7s ease;overflow:hidden;overflow:clip}
+.scene.active{opacity:1;pointer-events:auto}
+.scene:not(.active) *{animation-play-state:paused!important}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.scenery{position:absolute;inset:0;z-index:1;pointer-events:none}
+.scenery>svg{position:absolute;inset:0;width:100%;height:100%}
+.has-bg .scenery{display:none}
+.abs{position:absolute}
+.stars{position:absolute;inset:0;pointer-events:none;z-index:1}
+.stars i{position:absolute;background:#fff;border-radius:50%;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+.fx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.fx span{position:absolute;bottom:-8%;opacity:0;animation:rise linear infinite;will-change:transform}
+.fx.fall span{bottom:auto;top:-8%;animation-name:fall}
+@keyframes rise{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.9}90%{opacity:.85}100%{transform:translate(var(--dx,0),-112dvh) rotate(var(--rot,20deg));opacity:0}}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}8%{opacity:.95}92%{opacity:.9}100%{transform:translate(var(--dx,0),112dvh) rotate(var(--rot,200deg));opacity:0}}
+.fx .dot{width:4px;height:4px;border-radius:50%;background:#ffd98a;box-shadow:0 0 8px 2px rgba(255,217,138,.7)}
+.cloud{fill:rgba(255,255,255,.15);animation:drift 36s ease-in-out infinite alternate}
+.cloud.c2{animation-duration:48s;animation-direction:alternate-reverse}.cloud.c3{animation-duration:42s}
+@keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(50px)}}
+.bunting{position:absolute;left:0;top:0;width:100%;height:12%;z-index:3;pointer-events:none;transform-origin:top center;animation:sway2 6s ease-in-out infinite}
+@keyframes sway2{0%,100%{transform:skewX(-1.2deg)}50%{transform:skewX(1.2deg)}}
+.lights{position:absolute;left:0;right:0;top:0;width:100%;height:9%;pointer-events:none;z-index:3}
+.lights circle{animation:bulb 2.4s ease-in-out infinite}
+@keyframes bulb{0%,100%{opacity:.5}50%{opacity:1}}
+.balloon{position:absolute;width:9%;aspect-ratio:.8;border-radius:50% 50% 48% 48%;z-index:3;animation:bobb 5s ease-in-out infinite;box-shadow:inset -6px -8px 14px rgba(0,0,0,.18),inset 6px 6px 10px rgba(255,255,255,.35)}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:90%;background:rgba(255,255,255,.45)}
+@keyframes bobb{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+
+/* صفحهٔ ۱ */
+.title{position:absolute;left:5%;right:5%;top:14%;text-align:center;z-index:5}
+.title .t0{font-size:1.2em;font-weight:600;color:#ffd9ec;text-shadow:0 0 14px rgba(255,158,199,.9)}
+.title h1{font-size:2.35em;font-weight:800;line-height:1.35;margin-top:.1em;text-shadow:0 0 24px rgba(255,158,199,.8)}
+.chip{display:inline-block;margin-top:.5em;padding:.35em 1.1em;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);font-weight:600;font-size:1.02em;backdrop-filter:blur(3px)}
+.title .t2{margin-top:.55em;font-size:1.25em;font-weight:800;color:#fff3c4;text-shadow:0 0 16px rgba(255,217,138,.9)}
+.title p{margin-top:.6em;font-size:.95em;font-weight:300;opacity:.95;line-height:1.9}
+.btn{font-family:inherit;border:0;color:#fff;background:linear-gradient(135deg,#ff7eb6,#9b7bff);padding:.8em 1.8em;border-radius:99px;font-size:1.15em;font-weight:600;box-shadow:0 6px 24px rgba(155,123,255,.5);cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.94)}
+.btn.sm{font-size:.9em;padding:.5em 1.2em}
+.btn.ghost{background:rgba(255,255,255,.14);box-shadow:none;border:1px solid rgba(255,255,255,.3)}
+#startBtn{position:absolute;left:50%;top:50.5%;transform:translateX(-50%);animation:pulse 2s infinite;z-index:6;white-space:nowrap;font-size:1.1em}
+@keyframes pulse{0%,100%{box-shadow:0 6px 24px rgba(155,123,255,.5)}50%{box-shadow:0 6px 38px rgba(255,126,182,.95)}}
+.prog{position:absolute;left:6%;right:6%;top:57.2%;text-align:center;z-index:6;font-size:.82em}
+.prog .gi{display:flex;justify-content:center;gap:.55em;margin-bottom:.35em}
+.prog .gi i{font-style:normal;width:1.9em;height:1.9em;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);border:1px dashed rgba(255,255,255,.4);font-size:1em;transition:.4s;opacity:.8}
+.prog .gi i.on{background:rgba(255,217,138,.25);border:1px solid var(--gold);opacity:1;box-shadow:0 0 10px rgba(255,217,138,.6)}
+.prog .path{opacity:.85;font-weight:300;margin-top:.3em;line-height:1.7}
+.prog .rst{background:none;border:0;color:rgba(255,255,255,.55);font-family:inherit;font-size:.9em;text-decoration:underline;margin-top:.3em;cursor:pointer}
+
+/* characters */
+.char{position:absolute;z-index:4;pointer-events:none;transform-origin:50% 100%}
+.char::after{content:'✨';position:absolute;right:2%;top:4%;font-size:1.05em;animation:tw 2.6s ease-in-out infinite}
+.char img{width:100%;height:auto;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}
+.chph{aspect-ratio:3/4;border:2px dashed rgba(255,255,255,.45);border-radius:44% 44% 14% 14%;background:rgba(255,255,255,.07);display:grid;place-items:center;text-align:center;font-size:.7em;padding:.3em;line-height:1.4;color:rgba(255,255,255,.8)}
+.a-float{animation:cfloat 4.2s ease-in-out infinite}
+.a-sway{animation:csway 3.6s ease-in-out infinite}
+.a-bounce{animation:cbounce 1.5s ease-in-out infinite}
+.a-breathe{animation:cbreathe 3.2s ease-in-out infinite}
+@keyframes cfloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6%) rotate(2deg)}}
+@keyframes csway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes cbounce{0%,100%{transform:translateY(0) scaleY(1)}45%{transform:translateY(-8%) scaleY(1.03)}80%{transform:translateY(0) scaleY(.96)}}
+@keyframes cbreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+
+/* cat */
+.cat{position:absolute;cursor:pointer;z-index:7}
+.cat svg{width:100%;height:auto;overflow:visible;display:block}
+.cat .tail{transform-origin:88px 128px;transform-box:view-box;animation:wag 2.2s ease-in-out infinite}
+@keyframes wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(12deg)}}
+.cat .head{transform-origin:60px 80px;transform-box:view-box;animation:nod 4s ease-in-out infinite}
+@keyframes nod{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
+.cat .bubble{position:absolute;bottom:100%;left:0;background:#fff;color:#222;padding:.4em .8em;border-radius:14px;font-size:.78em;white-space:nowrap;opacity:0;transform:translateY(6px);transition:.3s;pointer-events:none}
+.cat.say .bubble{opacity:1;transform:none}
+
+/* gifts */
+.gcell{position:absolute;width:46%;height:24%;z-index:5}
+.gcell::before{content:"";position:absolute;left:4%;right:4%;bottom:12%;height:14%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,200,240,.38),transparent 70%)}
+.gift{position:absolute;bottom:16%;width:40%;cursor:pointer;animation:bob 3.2s ease-in-out infinite;z-index:5}
+.gcell:nth-child(2) .gift{animation-delay:-.8s}.gcell:nth-child(3) .gift{animation-delay:-1.6s}.gcell:nth-child(4) .gift{animation-delay:-2.4s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4%)}}
+.gift svg{width:100%;display:block;overflow:visible;filter:drop-shadow(0 8px 12px rgba(0,0,0,.45))}
+.gift .lid{transition:transform .6s cubic-bezier(.3,1.6,.5,1);transform-origin:50% 100%;transform-box:fill-box}
+.gift.g0.open .lid{transform:translateY(-30px)}
+.gift.g1.open .lid{transform:translate(24px,-14px) rotate(32deg)}
+.gift.g2.open .lid{transform:translateY(-34px) rotate(-200deg) scale(.9)}
+.gift.g3.open .lid{animation:hop .6s ease-in-out;transform:translateY(-26px) rotate(-14deg)}
+@keyframes hop{0%{transform:translateY(0)}30%{transform:translateY(-22px)}55%{transform:translateY(-4px)}100%{transform:translateY(-26px) rotate(-14deg)}}
+.gift.open svg{animation:gshake .45s}
+@keyframes gshake{25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+.gift .tap{position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 65%);opacity:0;animation:tapg 2.4s ease-in-out infinite}
+@keyframes tapg{0%,100%{opacity:0}50%{opacity:.8}}
+.gift.done .tap{display:none}
+.glab{position:absolute;left:0;right:0;bottom:0;text-align:center;font-size:.8em;text-shadow:0 2px 6px #000;font-weight:600;line-height:1.3}
+.gift.done::after{content:"✓";position:absolute;top:-6%;left:-6%;background:var(--gold);color:#222;border-radius:50%;width:1.6em;height:1.6em;display:grid;place-items:center;font-size:.8em}
+.hint{position:absolute;left:0;right:0;text-align:center;font-size:.85em;opacity:.85;font-weight:300;z-index:6;pointer-events:none}
+.head2{position:absolute;left:0;right:0;top:4.6%;text-align:center;font-size:1.5em;font-weight:800;text-shadow:0 0 18px rgba(183,156,255,.8);z-index:6}
+.head2 small{display:block;font-size:.5em;font-weight:300;opacity:.9;margin-top:.3em}
+
+/* page 3 */
+.dim{position:absolute;inset:0;pointer-events:none;background:#04031a;opacity:.8;transition:opacity 1s;z-index:8}
+.candle{position:absolute;width:13%;z-index:9;cursor:pointer}
+.candle img{width:100%;display:block;image-rendering:pixelated}
+.candle .cflame{position:absolute;left:0;top:0;opacity:0;transform-origin:50% 92%;transition:opacity .35s}
+.candle.on .cflame{opacity:1;animation:flick .5s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1,1) rotate(-1.5deg)}to{transform:scale(.94,1.08) rotate(1.5deg)}}
+.candle .glow{position:absolute;left:50%;top:6%;width:430%;aspect-ratio:1;transform:translate(-50%,-30%);border-radius:50%;background:radial-gradient(circle,rgba(255,190,100,.55),rgba(255,160,70,.18) 40%,transparent 68%);opacity:0;transition:opacity .6s;pointer-events:none}
+.candle.on .glow{opacity:1;animation:glowp 2s ease-in-out infinite alternate}
+@keyframes glowp{from{transform:translate(-50%,-30%) scale(1)}to{transform:translate(-50%,-30%) scale(1.08)}}
+.candle .tapc{position:absolute;left:50%;top:30%;width:200%;aspect-ratio:1;transform:translate(-50%,-30%);border-radius:50%;border:1px dashed rgba(255,230,180,.55);animation:tapg 2s ease-in-out infinite}
+.candle.on .tapc{display:none}
+.ctext{position:absolute;left:9%;right:9%;top:28.8%;text-align:center;font-size:.92em;line-height:1.85;z-index:10;text-shadow:0 2px 10px #000,0 0 14px rgba(255,200,120,.5);font-weight:400;pointer-events:none}
+.prop{position:absolute;cursor:pointer;z-index:5;transition:transform .2s}
+.prop img{width:100%;display:block;filter:drop-shadow(0 8px 10px rgba(0,0,0,.55))}
+.prop:active{transform:scale(.95)}
+.prop.diary{animation:bob 4s ease-in-out infinite}
+.plab{position:absolute;left:-8%;right:-8%;top:100%;margin-top:.15em;text-align:center;font-size:.62em;line-height:1.35;color:#ffe9cc;text-shadow:0 1px 6px #000,0 0 8px rgba(0,0,0,.8);pointer-events:none;font-weight:600}
+.prop.seen::after{content:"✓";position:absolute;top:-6%;left:-4%;background:var(--gold);color:#222;border-radius:50%;width:1.5em;height:1.5em;display:grid;place-items:center;font-size:.8em;z-index:2}
+.toast{position:absolute;left:50%;bottom:11%;transform:translate(-50%,10px);background:rgba(20,14,50,.94);border:1px solid rgba(255,255,255,.25);padding:.6em 1.1em;border-radius:18px;font-size:.88em;opacity:0;transition:.3s;z-index:80;pointer-events:none;max-width:92%;text-align:center;line-height:1.7}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* page 4: آهنگ‌ها */
+.spot{transform-box:fill-box;transform-origin:50% 0;animation:spot 6s ease-in-out infinite alternate}
+.spot.s2{animation-duration:8s;animation-direction:alternate-reverse}.spot.s3{animation-duration:7s}
+@keyframes spot{from{transform:rotate(-7deg);opacity:.55}to{transform:rotate(7deg);opacity:1}}
+.vinyl{position:absolute;width:52%;aspect-ratio:1;border-radius:50%;z-index:1;background:radial-gradient(circle,#ff7eb6 0 10%,#1a1030 11% 14%,transparent 15%),repeating-radial-gradient(circle,#141028 0 3px,#221845 3px 5px);box-shadow:0 0 30px rgba(255,126,182,.35);animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.eq{position:absolute;left:0;right:0;bottom:0;height:8%;display:flex;align-items:flex-end;gap:2.2%;padding:0 4%;z-index:1;pointer-events:none;direction:ltr}
+.eq i{flex:1;background:linear-gradient(#ff7eb6,#7b5cff);border-radius:4px 4px 0 0;animation:eqb 1.1s ease-in-out infinite alternate;opacity:.75}
+@keyframes eqb{from{height:15%}to{height:100%}}
+.songs{position:absolute;left:5%;right:5%;top:15.5%;bottom:19%;display:grid;grid-template-columns:1fr 1fr;gap:3%;overflow-y:auto;z-index:5;align-content:start;padding:2px}
+.songs::-webkit-scrollbar{display:none}
+.sc{background:rgba(18,10,45,.66);border:1px solid rgba(255,126,182,.45);border-radius:14px;padding:.45em;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.4);transition:.2s}
+.sc.cur{border-color:#ffd98a;box-shadow:0 0 18px rgba(255,217,138,.5)}
+.sc .cvr{position:relative;aspect-ratio:1/.82;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h),60%,42%),hsl(calc(var(--h) + 60),55%,22%))}
+.sc .cvr .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2em;color:rgba(255,255,255,.85)}
+.sc .cvr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sc .pb{position:absolute;right:.4em;bottom:.4em;width:2.2em;height:2.2em;border-radius:50%;background:rgba(255,126,182,.95);border:0;color:#fff;font-size:1em;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.sc .st{font-weight:800;font-size:.78em;margin-top:.4em;line-height:1.35;text-align:start}
+.sc .sa{font-size:.64em;opacity:.8;text-align:start;margin-top:.1em}
+.sc .se{margin-top:.3em;font-size:.62em;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:.25em .45em;background:rgba(255,255,255,.08);line-height:1.5}
+
+/* page 5 */
+.aurora{position:absolute;left:-20%;right:-20%;height:40%;border-radius:50%;z-index:1;pointer-events:none;animation:aur 14s ease-in-out infinite alternate}
+@keyframes aur{from{transform:translateX(-6%) scaleY(.9)}to{transform:translateX(6%) scaleY(1.15)}}
+.shoot{position:absolute;width:90px;height:2px;background:linear-gradient(90deg,transparent,#fff);z-index:2;opacity:0;transform:rotate(25deg);animation:shoot 7s linear infinite}
+@keyframes shoot{0%{transform:translate(0,0) rotate(25deg);opacity:0}2%{opacity:1}12%{transform:translate(160px,75px) rotate(25deg);opacity:0}100%{opacity:0}}
+.rays{position:absolute;left:50%;top:48%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:2;pointer-events:none;border-radius:50%;opacity:.28;background:repeating-conic-gradient(from 0deg,rgba(255,200,240,.9) 0 6deg,transparent 6deg 18deg);-webkit-mask:radial-gradient(circle,#000 0,transparent 55%);mask:radial-gradient(circle,#000 0,transparent 55%);animation:spin 40s linear infinite}
+.ftop{position:absolute;left:8%;right:8%;top:17%;text-align:center;font-size:1.32em;font-weight:600;line-height:1.8;z-index:7;text-shadow:0 0 18px rgba(255,158,199,.9)}
+.bigbox{position:absolute;left:50%;top:33%;width:50%;transform:translateX(-50%);cursor:pointer;animation:bob2 3.5s ease-in-out infinite;z-index:6}
+@keyframes bob2{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-4%)}}
+.bigbox svg{width:100%;overflow:visible;display:block;filter:drop-shadow(0 0 30px rgba(255,158,199,.55))}
+.bigbox .lid{transition:transform .8s cubic-bezier(.3,1.5,.5,1);transform-origin:50% 100%;transform-box:fill-box}
+.bigbox.open .lid{transform:translateY(-34px) rotate(-18deg)}
+.finalmsg{position:absolute;left:8%;right:8%;top:66%;text-align:center;opacity:0;transition:opacity 1.2s;pointer-events:none;z-index:7}
+.finalmsg.on{opacity:1;pointer-events:auto}
+.vrow{display:flex;gap:.6em;justify-content:center;align-items:center;flex-wrap:wrap}
+.hc{transition:opacity 1.6s}
+#s5.calm .hc,#s5.calm .finalmsg{opacity:0!important;pointer-events:none}
+.fsky{position:absolute;inset:0;z-index:7;pointer-events:none}
+.fsky svg{position:absolute;left:0;top:0;width:100%;height:100%}
+.fsky line{stroke:rgba(255,230,170,.5);stroke-width:1;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.8s}
+.fsky line.on{stroke-dashoffset:0}
+.fstar{position:absolute;font-size:2em;transform:translate(-50%,-50%) scale(0);opacity:0;color:#ffe9a8;text-shadow:0 0 16px #ffd98a,0 0 30px rgba(255,217,138,.6);transition:transform 1.4s cubic-bezier(.3,1.6,.5,1),opacity 1.4s;cursor:pointer;pointer-events:auto;padding:.2em}
+.fstar.on{transform:translate(-50%,-50%) scale(1);opacity:1;animation:stw 3.2s ease-in-out infinite 1.4s}
+.fstar.cur{color:#fff;text-shadow:0 0 22px #fff,0 0 40px #ffd98a}
+@keyframes stw{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.18)}}
+.wpanel{position:absolute;left:8%;right:8%;top:53%;min-height:22%;text-align:center;font-size:1.02em;line-height:2;font-weight:300;color:#fff3d0;text-shadow:0 0 14px rgba(255,217,138,.8);opacity:0;transition:opacity 1.1s;pointer-events:none;z-index:7}
+.wpanel.on{opacity:1}
+.wpanel.end{font-size:1.4em;font-weight:800;line-height:1.9;color:#fff}
+.wpanel small{display:block;margin-bottom:.5em;opacity:.75;font-size:.8em}
+.factions{position:absolute;left:4%;right:4%;top:80.5%;z-index:8;display:none;flex-wrap:wrap;gap:.5em;justify-content:center}
+.factions.on{display:flex}
+
+/* nav & topbar */
+.nav{position:absolute;left:0;right:0;bottom:1.2%;display:flex;justify-content:center;align-items:center;gap:1em;z-index:30;pointer-events:none;opacity:0;transition:opacity .4s;direction:ltr}
+.nav.on{opacity:1}
+.nav button{pointer-events:auto;font-family:inherit;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);width:2.7em;height:2.7em;border-radius:50%;font-size:1.1em;cursor:pointer;backdrop-filter:blur(4px)}
+.nav button:disabled{opacity:.25}
+.nmid{text-align:center;direction:rtl;min-width:7.5em;text-shadow:0 1px 4px #000;pointer-events:none}
+.nmid b{display:block;font-size:.72em;font-weight:600}
+.dots{display:flex;flex-direction:row-reverse;gap:.5em;justify-content:center;margin-top:.25em;pointer-events:auto}.dots i{width:.6em;height:.6em;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer}.dots i.a{background:var(--pink);box-shadow:0 0 8px var(--pink)}
+.topbar{position:absolute;left:0;right:0;top:.8%;z-index:36;display:flex;gap:.5em;align-items:center;padding:0 3%;pointer-events:none}
+.topbar>*{pointer-events:auto}
+.sfx{width:2.3em;height:2.3em;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(20,12,50,.6);backdrop-filter:blur(4px);color:#fff;font-size:1em;cursor:pointer;flex:none}
+.mp{direction:ltr;flex:1;display:none;align-items:center;gap:.4em;background:rgba(20,12,50,.78);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:.2em .6em;backdrop-filter:blur(6px);min-width:0}
+.mp.on{display:flex}
+.mp button{background:none;border:0;color:#fff;font-size:1em;cursor:pointer;flex:none;padding:.1em .3em}
+.mp .mpi{flex:1;min-width:0;line-height:1.25;overflow:hidden}
+.mp .mpi b{display:block;font-size:.72em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;direction:ltr;text-align:left}
+.mp .mpi small{font-size:.6em;opacity:.8;white-space:nowrap;display:block;overflow:hidden;text-overflow:ellipsis;direction:ltr;text-align:left}
+.mp input[type=range]{width:20%;flex:none;accent-color:#ff9ec7;direction:ltr}
+
+/* modal */
+.modal{position:absolute;inset:0;z-index:40;background:rgba(5,4,20,.74);display:none;place-items:center;padding:5%;backdrop-filter:blur(3px)}
+.modal.on{display:grid;animation:fade .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.card{position:relative;width:100%;max-height:88%;overflow:auto;background:linear-gradient(160deg,#2a1f5e,#18123a);border:1px solid rgba(255,255,255,.2);border-radius:22px;padding:1.5em 1.2em 1.2em;box-shadow:0 20px 50px rgba(0,0,0,.6);animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
+.card::-webkit-scrollbar{display:none}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+.card .x,.xbtn{position:absolute;top:.5em;left:.6em;background:none;border:0;color:#fff;font-size:1.3em;cursor:pointer;opacity:.8;z-index:5;padding:.3em}
+.card h3{font-size:1.2em;margin-bottom:.6em;color:var(--gold);padding-left:1.4em;line-height:1.6}
+.card .tx{line-height:2;font-size:.98em;font-weight:300;white-space:pre-line}
+.card .cimg{display:block;max-width:60%;max-height:26dvh;margin:0 auto .8em;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.card.dedi{text-align:center;padding:2em 1.2em 1.6em;background:linear-gradient(160deg,#5a2a7a,#2a1a5e 60%,#1a1240);border-color:rgba(255,158,199,.5);box-shadow:0 0 50px rgba(255,126,182,.4)}
+.card.dedi .big{font-size:1.9em;letter-spacing:.15em;margin-bottom:.4em}
+.card.dedi .tx{font-size:1.3em;font-weight:600;line-height:1.9;margin-bottom:.8em;text-shadow:0 0 16px rgba(255,158,199,.7)}
+.mnav{display:flex;justify-content:space-between;align-items:center;margin-top:1em;font-size:.85em;gap:.5em}
+.mnav button{font-family:inherit;background:rgba(255,255,255,.15);border:0;color:#fff;padding:.5em 1em;border-radius:99px;cursor:pointer}
+.mnav button:disabled{opacity:.25}
+.dlrow{display:flex;gap:.5em;flex-wrap:wrap;margin-top:.9em;justify-content:center}
+.dlrow button,.dl{font-family:inherit;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;padding:.45em 1em;border-radius:99px;font-size:.82em;cursor:pointer}
+.opt{display:block;width:100%;margin:.5em 0;padding:.7em;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-family:inherit;font-size:1em;cursor:pointer;transition:.15s}
+.opt.sel{background:rgba(155,123,255,.4);border-color:#c9b6ff}
+.opt.bad{animation:shake .4s;border-color:#ff7a9a}.opt.good{background:rgba(120,255,180,.25);border-color:#8fffc0}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.note{font-size:.85em;opacity:.9;margin-top:.8em;font-weight:300;min-height:1.6em;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.mir{border-radius:20px;padding:1.1em 1em;background:linear-gradient(160deg,rgba(255,255,255,.17),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 0 30px rgba(255,255,255,.08);animation:fadeUp 1s both}
+.mir .n{color:var(--gold);font-weight:800;margin-bottom:.4em;font-size:.95em}
+.mir.intro{background:linear-gradient(160deg,rgba(255,158,199,.2),rgba(155,123,255,.12))}
+.pdots{display:flex;gap:.4em;justify-content:center;margin-top:.8em}.pdots i{width:.55em;height:.55em;border-radius:50%;background:rgba(255,255,255,.25)}.pdots i.on{background:var(--gold)}
+.sky{position:relative;height:23dvh;border-radius:16px;background:radial-gradient(circle at 50% 100%,#3a2a7a,#0a0a2a);overflow:hidden;margin-bottom:.7em;border:1px solid rgba(255,255,255,.2)}
+.sky svg{position:absolute;inset:0;width:100%;height:100%}
+.sky svg line{stroke:rgba(255,230,170,.5);stroke-width:.6}
+.sstar{position:absolute;font-size:1.7em;transform:translate(-50%,-50%) scale(0);opacity:0;color:#ffe9a8;text-shadow:0 0 14px #ffd98a;transition:transform .9s cubic-bezier(.3,1.6,.5,1),opacity .9s;cursor:pointer;padding:.1em}
+.sstar.on{transform:translate(-50%,-50%) scale(1);opacity:1;animation:stw 3s ease-in-out infinite .9s}
+.sstar.cur{color:#fff;text-shadow:0 0 20px #fff}
+.sstar.ghost{opacity:.22;transform:translate(-50%,-50%) scale(.6);pointer-events:none}
+.wtext{min-height:7.2em;line-height:1.95;font-weight:300;font-size:.98em;transition:opacity .6s}
+.mc{border:1px solid rgba(255,255,255,.25);border-radius:14px;margin:.6em 0;overflow:hidden;background:rgba(255,255,255,.06)}
+.mc.done{border-color:rgba(255,217,138,.55)}
+.mc-h{padding:.7em .9em;display:flex;justify-content:space-between;cursor:pointer;font-weight:600;font-size:.95em}
+.mc-b{max-height:0;overflow:hidden;transition:max-height .8s ease,padding .4s;padding:0 .9em;line-height:2;font-weight:300;font-size:.95em;opacity:0}
+.mc.open .mc-b{max-height:90dvh;padding:.1em .9em .9em;opacity:1;transition:max-height .8s ease,padding .4s,opacity 1.2s .2s}
+.zoomwrap{max-height:52dvh;overflow:auto;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#000}
+.zoomwrap img{width:100%;display:block;cursor:zoom-in}
+.zoomwrap.z img{width:230%;cursor:zoom-out}
+.empty{border:2px dashed rgba(255,255,255,.35);border-radius:14px;padding:1.4em;text-align:center;font-size:.9em;line-height:2;opacity:.9}
+
+/* نامه */
+.ov{position:absolute;inset:0;z-index:45;background:rgba(5,4,20,.84);display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.ov.on{display:flex;animation:fade .3s}
+.lt-stack{position:relative;width:90%;aspect-ratio:736/1040;max-height:80dvh;container-type:inline-size}
+.lt-paper{position:absolute;inset:0;transform:translateY(6%) scale(.34) rotate(-4deg);opacity:0;transition:transform 1.5s cubic-bezier(.2,1.15,.3,1) .25s,opacity .5s .2s;filter:drop-shadow(0 12px 24px rgba(0,0,0,.5))}
+.lt-paper img{width:100%;height:100%;display:block;border-radius:3px}
+.lt-text{position:absolute;left:9%;right:9%;top:17.3%;height:82.95cqw;overflow:hidden;direction:rtl;text-align:right;font-size:3.7cqw;line-height:5.53cqw;white-space:pre-line;font-weight:400;opacity:0;transform:translateY(8px);transition:opacity .9s,transform .9s}
+.lt-text b{font-weight:800}
+.lt-text.on{opacity:1;transform:none}
+.lt-envw{position:absolute;left:50%;top:50%;width:84%;transform:translate(-50%,-50%);cursor:pointer;z-index:3;transition:transform 1.1s cubic-bezier(.5,0,.8,.4),opacity .9s .2s}
+.lt-envw img{width:100%;display:block;filter:drop-shadow(0 12px 22px rgba(0,0,0,.6))}
+.lt-envw.shake{animation:wob .55s ease-in-out}
+@keyframes wob{0%,100%{transform:translate(-50%,-50%) rotate(0)}20%{transform:translate(-50%,-50%) rotate(-3deg)}40%{transform:translate(-50%,-50%) rotate(3deg)}60%{transform:translate(-50%,-50%) rotate(-2deg)}80%{transform:translate(-50%,-50%) rotate(2deg)}}
+.lt-stack.go .lt-envw{transform:translate(-50%,110%) rotate(-7deg);opacity:0;pointer-events:none}
+.lt-stack.go .lt-paper{transform:none;opacity:1}
+.lt-seal{position:absolute;width:20%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none}
+.lt-envw.shake .lt-seal{animation:ring .8s ease-out}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,230,160,.9);background:radial-gradient(circle,rgba(255,240,190,.9),transparent 70%)}100%{box-shadow:0 0 0 60px rgba(255,230,160,0);background:transparent}}
+.lt-hint{margin-top:.8em;font-size:.9em;opacity:.9;animation:tapg 2s infinite}
+.lt-nav{margin-top:.6em;display:none;width:90%}
+.lt-nav.on{display:flex}
+.burst{position:absolute;z-index:90;pointer-events:none;animation:burst 1.3s ease-out forwards;font-size:1.3em}
+@keyframes burst{0%{transform:translate(0,0) scale(.4);opacity:1}100%{transform:translate(var(--bx),var(--by)) scale(1.3);opacity:0}}
+
+/* دفتر */
+.dv{perspective:1400px}
+.dv-closed{width:68%;transition:transform .45s ease-in,opacity .45s;transform:scale(.7);opacity:0;filter:drop-shadow(0 14px 24px rgba(0,0,0,.6))}
+.dv.on .dv-closed{transform:scale(1);opacity:1;transition:transform .7s cubic-bezier(.3,1.4,.5,1),opacity .4s}
+.dv.flip .dv-closed{transform:rotateY(90deg) scale(1.05);opacity:.4;transition:transform .45s ease-in,opacity .45s}
+.dv-vp{display:none;position:relative;width:97%;aspect-ratio:229.5/335;max-height:78dvh;overflow:hidden;direction:ltr;border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.6);background:#f3ece8}
+.dv.open .dv-closed{display:none}
+.dv.open .dv-vp{display:block;animation:unfold .65s cubic-bezier(.2,1,.3,1)}
+@keyframes unfold{from{transform:rotateY(-80deg) scale(.8);opacity:0}to{transform:none;opacity:1}}
+.dv-spread,.lf{container-type:inline-size}
+.dv-spread{position:absolute;left:0;top:0;width:200%;height:100%;transition:transform .7s cubic-bezier(.5,0,.2,1)}
+.dv-spread.nt{transition:none}
+.dv-spread>img,.lf>img{width:100%;height:100%;display:block;position:absolute;inset:0}
+.dv-t{position:absolute;direction:rtl;text-align:right;color:#6b4a5c;font-size:1.95cqw;line-height:1.95;overflow-y:auto;font-weight:400}
+.dv-t::-webkit-scrollbar{width:4px}.dv-t::-webkit-scrollbar-thumb{background:rgba(181,84,126,.55);border-radius:4px}.dv-t{scrollbar-width:thin;scrollbar-color:rgba(181,84,126,.55) transparent;padding-left:.5cqw}
+.dv-t.l{left:5.2%;width:39.5%;top:19.5%;height:66%}
+.dv-t.r{left:54.5%;width:37%;top:19.6%;height:62%}
+.dv-t h4{font-size:1.15em;color:#8a3d62;margin-bottom:.45em;line-height:1.6;font-weight:800}
+.dv-t p{margin-bottom:.55em}
+.dv-t .stks{display:flex;gap:.7em;justify-content:center;margin:.5em 0 .7em}
+.dv-t .stks img{width:22%;aspect-ratio:1;object-fit:cover;border:.5cqw solid #fff;border-radius:1.2cqw;box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.3);transform:rotate(var(--r))}
+.dv-t label{display:block;font-weight:600;margin-top:.6em;font-size:.95em;line-height:1.7}
+.dv-t textarea{width:100%;min-height:4em;border:0;border-bottom:1px dashed #b48aa0;background:rgba(255,255,255,.55);border-radius:6px;padding:.4em .5em;font-size:1em;color:#4a2f3f;resize:none;direction:rtl;line-height:1.8}
+.dv-t .frow{display:flex;gap:.5em;margin:.8em 0 .4em;flex-wrap:wrap;position:sticky;bottom:0;background:linear-gradient(transparent,rgba(250,244,244,.97) 30%);padding:.5em 0 .2em;z-index:2}
+.dv-t .frow button{font-family:inherit;border:0;border-radius:99px;padding:.45em 1.1em;background:#b5547e;color:#fff;font-size:.95em;cursor:pointer}
+.dv-t .frow button.g{background:#8e7aa8}
+.dv-t .fnote{font-size:.85em;opacity:.85;line-height:1.8;margin-top:.3em}
+.dv-pn{position:absolute;bottom:6.2%;font-size:1.7cqw;color:#a88aa0;font-weight:600}
+.dv-pn.l{left:22%}.dv-pn.r{left:73%}
+.lf{position:absolute;top:0;height:100%;width:50%;overflow:hidden;display:none;z-index:6;pointer-events:none;box-shadow:0 0 22px rgba(0,0,0,.4)}
+.lf>.in{position:absolute;top:0;height:100%;width:200%}
+.lf.f{left:50%;transform-origin:left center;animation:leafF .7s ease-in forwards}
+.lf.f>.in{left:-100%}
+.lf.b{left:0;transform-origin:right center;animation:leafB .7s ease-in forwards}
+.lf.b>.in{left:0}
+@keyframes leafF{0%{transform:perspective(1200px) rotateY(0);filter:brightness(1)}100%{transform:perspective(1200px) rotateY(-92deg);filter:brightness(.7)}}
+@keyframes leafB{0%{transform:perspective(1200px) rotateY(0);filter:brightness(1)}100%{transform:perspective(1200px) rotateY(92deg);filter:brightness(.7)}}
+.dv-nav{margin-top:.6em;width:96%;display:none}
+.dv.open .dv-nav{display:flex}
+.dv-top{display:none;margin-top:.5em}
+.dv.open .dv-top{display:flex;gap:.5em}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- ۱: ورود -->
+<section class="scene active" id="s1">
+  <div class="bg"></div>
+  <div class="scenery"><svg viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1257"/><stop offset=".38" stop-color="#4a2a8f"/><stop offset=".66" stop-color="#a64bab"/><stop offset=".86" stop-color="#ff9ec7"/><stop offset="1" stop-color="#ffd2b8"/></linearGradient>
+      <radialGradient id="moon1"><stop offset="0" stop-color="#fff8dc" stop-opacity=".85"/><stop offset="1" stop-color="#fff8dc" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="360" height="640" fill="url(#sky1)"/>
+    <circle cx="300" cy="86" r="70" fill="url(#moon1)"/>
+    <circle cx="300" cy="86" r="28" fill="#fff6d6"/><circle cx="291" cy="80" r="5" fill="#efe0ae" opacity=".7"/><circle cx="309" cy="94" r="3.5" fill="#efe0ae" opacity=".7"/>
+    <g class="cloud"><ellipse cx="60" cy="190" rx="46" ry="12"/><ellipse cx="92" cy="182" rx="30" ry="14"/><ellipse cx="34" cy="185" rx="26" ry="10"/></g>
+    <g class="cloud c2"><ellipse cx="270" cy="360" rx="52" ry="12"/><ellipse cx="302" cy="352" rx="30" ry="13"/></g>
+    <g class="cloud c3"><ellipse cx="150" cy="420" rx="44" ry="10"/><ellipse cx="176" cy="413" rx="26" ry="11"/></g>
+    <path d="M0 470 C60 440 120 450 180 470 S300 500 360 455 V640 H0Z" fill="#7a3f9c"/>
+    <path d="M0 522 C70 492 150 522 220 507 S320 482 360 512 V640 H0Z" fill="#53298a"/>
+    <path d="M0 578 C80 552 160 582 240 567 S330 552 360 572 V640 H0Z" fill="#2f1862"/>
+    <g id="fl1"></g>
+  </svg></div>
+  <div class="stars"></div>
+  <div class="fx" data-fx="hearts"></div>
+  <svg class="bunting" id="bunt1" viewBox="0 0 360 80" preserveAspectRatio="none"></svg>
+  <div class="balloon" style="left:3%;top:22%;width:8%;background:radial-gradient(circle at 35% 30%,#ffc2dc,#ff7eb6)"></div>
+  <div class="balloon" style="right:4%;top:33%;width:8%;animation-delay:-3s;background:radial-gradient(circle at 35% 30%,#fff0bd,#ffc85e)"></div>
+  <div class="title">
+    <div class="t0" id="wTo"></div>
+    <h1 id="wTitle"></h1>
+    <div class="chip" id="wDate"></div>
+    <div class="t2" id="wAge"></div>
+    <p id="wSub"></p>
+  </div>
+  <button class="btn" id="startBtn"></button>
+  <div class="prog" id="prog1"></div>
+  <div class="cat" id="cat1" style="left:4%;bottom:4%;width:20%" data-say="میو~ منو بزن!"></div>
+</section>
+
+<!-- ۲: اتاق هدایا -->
+<section class="scene" id="s2">
+  <div class="bg"></div>
+  <div class="scenery"><svg viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="wall2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1f63"/><stop offset="1" stop-color="#58307f"/></linearGradient>
+      <linearGradient id="floor2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2150"/><stop offset="1" stop-color="#1c0f2b"/></linearGradient>
+      <pattern id="wp2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M20 8l2.2 5.4 5.8.4-4.4 3.8 1.4 5.6-5-3.2-5 3.2 1.4-5.6-4.4-3.8 5.8-.4z" fill="#fff" opacity=".1"/><circle cx="4" cy="34" r="1.6" fill="#ff9ec7" opacity=".25"/><circle cx="36" cy="30" r="1.6" fill="#b79cff" opacity=".3"/></pattern>
+    </defs>
+    <rect width="360" height="285" fill="url(#wall2)"/><rect width="360" height="285" fill="url(#wp2)"/>
+    <rect y="285" width="360" height="355" fill="url(#floor2)"/>
+    <g stroke="#000" stroke-opacity=".18"><path d="M0 285H360M0 330H360M0 385H360M0 450H360M0 525H360"/></g>
+    <rect y="276" width="360" height="12" fill="#2a1640"/><rect y="276" width="360" height="2" fill="#7a4fa8"/>
+    <ellipse cx="180" cy="430" rx="186" ry="96" fill="#ff9ec7" opacity=".28"/><ellipse cx="180" cy="430" rx="160" ry="80" fill="none" stroke="#fff" stroke-opacity=".28" stroke-dasharray="5 6"/><ellipse cx="180" cy="430" rx="120" ry="58" fill="none" stroke="#ffd98a" stroke-opacity=".3"/>
+    <rect x="14" y="118" width="136" height="7" rx="2" fill="#7a4a3a"/>
+    <rect x="22" y="86" width="9" height="32" fill="#ff7eb6"/><rect x="32" y="92" width="8" height="26" fill="#9b7bff"/><rect x="41" y="82" width="10" height="36" fill="#ffd98a"/><rect x="52" y="90" width="8" height="28" fill="#6fd1c4"/>
+    <circle cx="96" cy="108" r="10" fill="#ff9ec7"/><rect x="92" y="115" width="8" height="3" fill="#7a4a3a"/><path d="M122 118c-2-18 14-26 18-8" fill="#5ec08a"/><path d="M130 118c0-16 -10-22 -14-12" fill="#3da56c"/>
+    <rect x="210" y="118" width="136" height="7" rx="2" fill="#7a4a3a"/>
+    <rect x="222" y="76" width="30" height="40" rx="3" fill="#2a1a4a" stroke="#ffd98a" stroke-width="2"/><path d="M237 102c-8-6-10-12-5-15 3-2 5 0 5 2 0-2 2-4 5-2 5 3 3 9-5 15z" fill="#ff7eb6"/>
+    <rect x="262" y="86" width="9" height="30" fill="#9b7bff"/><rect x="272" y="80" width="10" height="36" fill="#ff7eb6"/><rect x="283" y="90" width="8" height="26" fill="#ffd98a"/>
+    <path d="M312 118c-10-6-12-30 0-38 12 8 10 32 0 38z" fill="#fff" opacity=".85"/><circle cx="308" cy="92" r="2" fill="#222"/><circle cx="318" cy="92" r="2" fill="#222"/>
+  </svg></div>
+  <svg class="lights" viewBox="0 0 100 14" preserveAspectRatio="none"><path d="M0 3 Q25 11 50 3 T100 4" stroke="#8a6aa8" stroke-width=".3" fill="none"/></svg>
+  <div class="fx fall" data-fx="confetti"></div>
+  <div class="head2" id="giftHead"></div>
+  <div id="gifts"></div>
+  <div class="cat" id="cat2" style="left:40%;top:73%;width:20%" data-say="یه معما دارم! 🐾"></div>
+  <div class="hint" style="top:88.6%" id="giftHint"></div>
+</section>
+
+<!-- ۳: شمع‌ها، نامه‌ها و دفتر -->
+<section class="scene" id="s3">
+  <div class="bg"></div>
+  <div class="scenery"><svg viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="wall3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1030"/><stop offset="1" stop-color="#231a4a"/></linearGradient>
+      <linearGradient id="glass3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#090d3a"/><stop offset="1" stop-color="#34267a"/></linearGradient>
+      <linearGradient id="desk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4a3a"/><stop offset=".1" stop-color="#4a3028"/><stop offset="1" stop-color="#2a1a1c"/></linearGradient>
+      <radialGradient id="moon3"><stop offset="0" stop-color="#fff3c4" stop-opacity=".8"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
+      <clipPath id="gc3"><rect x="110" y="42" width="140" height="130"/></clipPath>
+    </defs>
+    <rect width="360" height="640" fill="url(#wall3)"/>
+    <g opacity=".12" stroke="#fff"><path d="M0 120H360M0 200H360M0 280H360"/></g>
+    <rect x="100" y="34" width="160" height="148" rx="8" fill="#2d2358"/>
+    <rect x="110" y="42" width="140" height="130" fill="url(#glass3)"/>
+    <g clip-path="url(#gc3)"><circle cx="212" cy="82" r="40" fill="url(#moon3)"/><circle cx="212" cy="82" r="16" fill="#fff3c4"/><g id="gst3"></g><g id="rain3" stroke="#a9b8ff" stroke-opacity=".55" stroke-width="1"></g></g>
+    <path d="M180 42V172M110 107H250" stroke="#2d2358" stroke-width="5"/>
+    <rect x="92" y="172" width="176" height="11" rx="3" fill="#3d3170"/>
+    <path d="M0 0H100C92 60 106 120 92 205 70 235 30 220 0 245Z" fill="#5b2352"/><path d="M360 0H260C268 60 254 120 268 205 290 235 330 220 360 245Z" fill="#5b2352"/>
+    <g stroke="#3a1236" stroke-opacity=".6"><path d="M24 0C20 70 30 150 22 232M52 0C48 70 58 150 50 224M76 0C72 70 82 150 74 214M336 0C340 70 330 150 338 232M308 0C312 70 302 150 310 224M284 0C288 70 278 150 286 214"/></g>
+    <rect y="345" width="360" height="295" fill="url(#desk3)"/><rect y="345" width="360" height="3" fill="#8a6a56" opacity=".7"/>
+    <g stroke="#000" stroke-opacity=".2"><path d="M0 400H360M0 470H360M0 545H360"/></g>
+  </svg></div>
+  <svg class="lights" viewBox="0 0 100 14" preserveAspectRatio="none"><path d="M0 2 Q25 9 50 2 T100 3" stroke="#6b5a8a" stroke-width=".3" fill="none"/></svg>
+  <div class="fx" data-fx="dust"></div>
+  <div class="ctext" id="candleText"></div>
+  <div class="hint" style="top:36.5%;z-index:10" id="candleHint"></div>
+  <div class="candle" data-i="0" style="left:14%;bottom:44%"><div class="glow"></div><img src="assets/props/candle_off.png" alt=""><img class="cflame" src="assets/props/candle_flame.png" alt=""><div class="tapc"></div></div>
+  <div class="candle" data-i="1" style="left:32%;bottom:43%"><div class="glow"></div><img src="assets/props/candle_off.png" alt=""><img class="cflame" src="assets/props/candle_flame.png" alt=""><div class="tapc"></div></div>
+  <div class="candle" data-i="2" style="left:51%;bottom:44%"><div class="glow"></div><img src="assets/props/candle_off.png" alt=""><img class="cflame" src="assets/props/candle_flame.png" alt=""><div class="tapc"></div></div>
+  <div class="candle" data-i="3" style="left:70%;bottom:43%"><div class="glow"></div><img src="assets/props/candle_off.png" alt=""><img class="cflame" src="assets/props/candle_flame.png" alt=""><div class="tapc"></div></div>
+  <div class="prop diary" id="diaryProp" style="left:3%;top:60%;width:38%"><img src="assets/props/diary_closed.png" alt="دفتر خاطرات"></div>
+  <div class="prop" id="env0" data-l="0" style="left:48%;top:61%;width:28%;transform:rotate(5deg)"><img src="assets/props/env1.png" alt="نامه"></div>
+  <div class="prop" id="env1" data-l="1" style="left:50%;top:75%;width:29%;transform:rotate(-4deg)"><img src="assets/props/env2.png" alt="نامه"></div>
+  <div class="cat" id="cat3" style="left:80%;bottom:5%;width:18%" data-say="اول یه شمع روشن کن 🕯️"></div>
+  <div class="dim" id="dim"></div>
+</section>
+
+<!-- ۴: آهنگ‌ها -->
+<section class="scene" id="s4">
+  <div class="bg"></div>
+  <div class="scenery"><svg viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0d3d"/><stop offset=".6" stop-color="#2a1260"/><stop offset="1" stop-color="#5a1f6e"/></linearGradient>
+      <linearGradient id="sp4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd6f2" stop-opacity=".5"/><stop offset="1" stop-color="#ffd6f2" stop-opacity="0"/></linearGradient>
+      <linearGradient id="fl4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a1b6a"/><stop offset="1" stop-color="#16082e"/></linearGradient>
+    </defs>
+    <rect width="360" height="640" fill="url(#bg4)"/>
+    <polygon class="spot" points="40,0 90,0 170,470 -20,470" fill="url(#sp4)"/>
+    <polygon class="spot s2" points="150,0 210,0 300,500 70,500" fill="url(#sp4)"/>
+    <polygon class="spot s3" points="270,0 320,0 400,470 210,470" fill="url(#sp4)"/>
+    <path d="M0 540H360V640H0Z" fill="url(#fl4)"/><path d="M0 540H360" stroke="#ff7eb6" stroke-opacity=".6" stroke-width="2"/>
+  </svg></div>
+  <div class="stars"></div>
+  <div class="vinyl" style="left:-24%;bottom:2%"></div><div class="vinyl" style="right:-26%;bottom:8%;animation-direction:reverse"></div>
+  <div class="eq" id="eq"></div>
+  <div class="fx" data-fx="notes"></div>
+  <div class="head2" id="coverHead"></div>
+  <div class="songs" id="songs"></div>
+</section>
+
+<!-- ۵: هدیهٔ نهایی -->
+<section class="scene" id="s5">
+  <div class="bg"></div>
+  <div class="scenery"><svg viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03031a"/><stop offset=".45" stop-color="#101654"/><stop offset=".75" stop-color="#3a1f78"/><stop offset="1" stop-color="#8a3f95"/></linearGradient>
+      <radialGradient id="moon5"><stop offset="0" stop-color="#fff4cf" stop-opacity=".8"/><stop offset="1" stop-color="#fff4cf" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="360" height="640" fill="url(#sky5)"/>
+    <circle cx="300" cy="96" r="70" fill="url(#moon5)"/><circle cx="300" cy="96" r="32" fill="#fff4cf"/><circle cx="290" cy="88" r="5" fill="#eadca6" opacity=".7"/><circle cx="309" cy="104" r="4" fill="#eadca6" opacity=".7"/>
+    <path d="M0 530C60 500 110 520 180 505S300 485 360 515V640H0Z" fill="#1d1250"/>
+    <path d="M0 575C70 548 150 575 230 560S330 548 360 565V640H0Z" fill="#0f0a30"/>
+    <g fill="#0a0724"><path d="M30 575l10-40 10 40zM48 575l8-30 8 30zM300 565l10-44 10 44zM318 565l8-32 8 32z"/></g>
+  </svg></div>
+  <div class="stars"></div>
+  <div class="aurora hc" style="top:6%;background:radial-gradient(ellipse,rgba(90,255,200,.22),transparent 65%)"></div>
+  <div class="aurora hc" style="top:20%;animation-delay:-5s;animation-direction:alternate-reverse;background:radial-gradient(ellipse,rgba(255,126,182,.2),transparent 65%)"></div>
+  <div class="shoot hc" style="left:18%;top:8%"></div><div class="shoot hc" style="left:55%;top:20%;animation-delay:-3.5s"></div>
+  <div class="fx hc" data-fx="sparkles"></div>
+  <div class="rays hc"></div>
+  <div class="ftop hc" id="ftop"></div>
+  <div class="bigbox hc" id="bigbox"></div>
+  <div class="hint hc" style="top:62%" id="finalHint"></div>
+  <div class="finalmsg" id="finalmsg"><div class="vrow"><button class="btn" id="voiceBtn"></button><button class="btn sm ghost" id="skipBtn" style="display:none">ادامه ✨</button></div><div class="note" id="voiceNote"></div></div>
+  <div class="fsky" id="fsky"><svg id="fsvg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg></div>
+  <div class="wpanel" id="wpanel"></div>
+  <div class="factions" id="factions"></div>
+</section>
+
+<div class="topbar"><button class="sfx" id="sfxBtn" aria-label="افکت صوتی">🔔</button>
+  <div class="mp" id="mp"><button id="mpPrev" aria-label="قبلی">⏮</button><button id="mpPlay" aria-label="پخش">▶</button><button id="mpNext" aria-label="بعدی">⏭</button><div class="mpi"><b id="mpT"></b><small id="mpA"></small></div><input type="range" id="mpSeek" min="0" max="100" value="0" aria-label="جلو و عقب"><button id="mpDl" aria-label="دانلود">⬇</button></div></div>
+<div class="nav" id="nav"><button id="next" aria-label="بعدی">‹</button><div class="nmid"><b id="pgLabel"></b><div class="dots" id="dots"></div></div><button id="prev" aria-label="قبلی">›</button></div>
+<div class="modal" id="modal"><div class="card" id="mcard"><button class="x" id="mx">✕</button><div id="mbody"></div><div class="mnav" id="mnav"></div></div></div>
+
+<div class="ov" id="lt">
+  <button class="xbtn" id="ltx">✕</button>
+  <div class="lt-stack" id="ltstack">
+    <div class="lt-paper" id="ltpaper"><img id="ltpimg" alt=""><div class="lt-text" id="lttext"></div></div>
+    <div class="lt-envw" id="ltenv"><img id="ltimg" alt="پاکت"><div class="lt-seal" id="ltseal"></div></div>
+  </div>
+  <div class="lt-hint" id="lthint">برای باز کردن، روی پاکت بزن 💌</div>
+  <div class="mnav lt-nav" id="ltnav"></div>
+</div>
+
+<div class="ov dv" id="dv">
+  <button class="xbtn" id="dvx">✕</button>
+  <img class="dv-closed" id="dvclosed" src="assets/props/diary_closed.png" alt="">
+  <div class="dv-vp" id="dvvp"><div class="dv-spread" id="dvsp"><img src="assets/props/diary_open.png" alt=""><div class="dv-t l" id="dvL"></div><div class="dv-t r" id="dvR"></div><div class="dv-pn l" id="pnL"></div><div class="dv-pn r" id="pnR"></div></div>
+    <div class="lf" id="dvlf"><div class="in" id="dvlfin"></div></div></div>
+  <div class="mnav dv-nav" id="dvnav"></div>
+  <div class="dv-top" id="dvtop"></div>
+</div>
+<div class="toast" id="toast2"></div>
+</div>
+
+<script>
+/* ======================================================================================
+   تنظیمات و متن‌ها — همهٔ متن‌های شخصی دقیقاً همونی‌ان که فرستادی (بدون هیچ تغییری)
+   ====================================================================================== */
+const CONFIG = {
+  placeholders: true,
+  bg: { s1:'assets/bg1.jpg', s2:'assets/bg2.jpg', s3:'assets/bg3.jpg', s4:'assets/bg4.jpg', s5:'assets/bg5.jpg' },
+  chars: { sylus:'assets/chars/sylus.png', sylus2:'assets/chars/sylus2.png', kuromi:'assets/chars/kuromi.png', kuromi2:'assets/chars/kuromi2.png', kuromi3:'assets/chars/kuromi3.png',
+           kitty:'assets/chars/hellokitty.png', kitty2:'assets/chars/hellokitty2.png', fluttershy:'assets/chars/fluttershy.png' },
+  charNames: { sylus:'Sylus', sylus2:'Sylus', kuromi:'Kuromi', kuromi2:'Kuromi', kuromi3:'Kuromi', kitty:'Hello Kitty', kitty2:'Hello Kitty', fluttershy:'Fluttershy' },
+  peeks: {
+    s1:[ {c:'kuromi',x:0,b:17,w:29,a:'float',d:.2}, {c:'fluttershy',x:36,b:19.5,w:26,a:'float',d:1}, {c:'kitty',x:30,b:4,w:24,a:'sway',d:.5}, {c:'sylus',x:62,b:3,w:34,a:'breathe'} ],
+    s2:[],
+    s3:[ {c:'kuromi2',x:0,b:47,w:19,a:'bounce'}, {c:'sylus2',x:80,b:47,w:18,a:'breathe'} ],
+    s4:[ {c:'kuromi3',x:1,b:8,w:22,a:'bounce'}, {c:'kitty2',x:40,b:8,w:19,a:'sway',d:.4}, {c:'sylus',x:70,b:8,w:26,a:'breathe'} ],
+    s5:[ {c:'sylus2',x:1,b:9,w:19,a:'breathe'}, {c:'kuromi2',x:24,b:8,w:19,a:'bounce',d:.3}, {c:'kitty2',x:48,b:8,w:22,a:'sway'}, {c:'fluttershy',x:70,b:11,w:29,a:'float'} ]
+  },
+  stickers: ['assets/stickers/1.jpg','assets/stickers/2.jpg','assets/stickers/3.jpg'],
+  // فایل‌های خارجی (پسوند خودکار پیدا می‌شه): عکس‌ها jpg/jpeg/png/webp ، صدا mp3/m4a/ogg/wav
+  files: { voice:'assets/voice', newspaper:'assets/newspaper' },
+
+  welcome: {
+    to:'غزل خانم، فرشته کوچولوی من',
+    title:'تولدت مبارک!',
+    date:'امروز ۱۷ آبان، تولد غزله 🎂',
+    age:'امسال ۱۵ ساله میشییی 🎉',
+    sub:'به دنیای کوچیکی که فقط برای تو ساخته شده خوش اومدی 💗',
+    start:'شروع سورپرایز', resume:'ادامه از جایی که بودی 💗',
+    path:'مسیر: هدیه‌ها ← شمع و نامه‌ها ← آهنگ‌ها ← هدیهٔ آخر'
+  },
+  dedication: { hearts:'💗💖💞💝💕', text:'تقدیم فقط و فقط به غزل گوگولی مگولی و خوشمزه و خوش صدای من', button:'بزن بریم 💗' },
+  catMsg: 'میوووو... عمو مهدیار گفت که بهت بگم خیلی دوست داره 💗💞💖💝 میاوووو',
+
+  giftHead:'اتاق هدایا', giftHint:'روی هدیه‌ها بزن 🎁 | گربه یه معما داره',
+  gifts: [
+    { id:'mirror', c:'sylus',      label:'آینهٔ شخصیت',     color:'#5a3d9a', ribbon:'#ffd98a', side:'right', a:'breathe', fx:['✨','🪞','💎'] },
+    { id:'paper',  c:'kuromi',     label:'Ghazal Times',    color:'#7a45c9', ribbon:'#ff9ec7', side:'left',  a:'bounce',  fx:['📰','✨','💜'] },
+    { id:'stars',  c:'kitty',      label:'ستاره‌های آرزو',  color:'#ff9ec7', ribbon:'#ffffff', side:'right', a:'sway',    fx:['⭐','🌟','💫'] },
+    { id:'memo',   c:'fluttershy', label:'خاطرات آینده',    color:'#ffe08a', ribbon:'#ff9ec7', side:'left',  a:'float',   fx:['💞','🌸','🦋'] }
+  ],
+  mirror: {
+    title:'آینهٔ شخصیت',
+    intro:'فرشته کوچولوی من؛\nتو پر از ویژگی های قشنگ و قابل توجه و احترام هستی ولی من اونایی رو انتخاب کردم که فکر میکنم خودت اونطوری که من میبینمشون نمیبینیشون:',
+    notes:[
+      'غزل باید بدونی وقتی یه چیز کوچیکی رو بهت گفتم و بعدا دوباره دربارش صحبت کردیم و دیدم که کاملا یادت مونده چقدر خوشحال شدم.\nممنونم ازت🙃❤️.',
+      'غزل هیچوقت نذاشتی سر هیچ موضوعی ناراحت بشم و یا حتی اگرم شدم خیلی سریع از دلم درآوردی و این نشون صمیمیت بینمونه🫂.',
+      'غزل فکر نمیکنم خودت بدونی ولی اینکه به حرفام گوش میدی و پیشت میتونم خود خودم باشم خیلی برام ارزشمنده و باعث میشه حس کنم شنیده شدم🎇❤️.',
+      'غزل حس میکنم این مورد برات چیز خاصی نباشه و حس کنی چیزیه که همه همینطوری انجامش میدن؛ ولی باید بدونی یکی از مسئولیت پذیر ترین دخترایی هستی که میشناسم. شاید یچیز کوچیک حتی روی دوشت بندازن ولی همیشه کامل انجامش میدی و این چیزیه که ینفر باید بهت میگفت و براش ازت تشکر میکرد🥹❤️‍🩹.',
+      'غزل این یکی خیلی خاصه و خب قبلا هم بهت گفتمش ولی یچیز خاصی که درباره تو هست نوع ابراز محبتت هست...(امیر محمد🤣) و خب میشه گذاشتش پای خجالتی بودنت ولی بازم باعث میشه تو خاص و ارزشمند باشی.'
+    ]
+  },
+  paper: { title:'Ghazal Times', missing:'عکس روزنامه هنوز اضافه نشده.\nفایلش رو با نام newspaper.jpg داخل پوشهٔ assets بذار.' },
+  stars: {
+    title:'چند آرزوی زیبا و قشنگ برای غزل و آینده اش:',
+    wishes:[
+      'غزل زیبا روی من؛ از ته دلم برات آرزومندم که در آینده به اون نسخه ای که بتونی بهش افتخار کنی و ازش راضی باشی برسی.',
+      'آرزو میکنم توی راه های سخت زندگیت و مراحلی که ممکنه توشون ناامید بشی یه دوست نزدیک و یا یه شریک عاطفی درست پیشت باشن.',
+      'آرزو میکنم همیشه حال روحی و جسمیت خوب خوب باشن.',
+      'آرزو میکنم همینقدری که با بقیه مهربونی یروزی هم بتونی همیقدر با خودت مهربون باشی.',
+      'آرزو میکنم همیشه ینفر رو داشته باشی که بتونی بدون ترس از قضاوت باهاش صادق باشی و حرف و نظر واقعیت رو بهش بگی و همینطور امیدوارم اون فرد خودم باشم.(میدونم خودخواهم😔)'
+    ]
+  },
+  memo: {
+    title:'خاطراتی که هنوز باهم نساختیم',
+    sub1:'بعضی از خاطرات هنوز ساخته نشدن ولی امیدوارم روزی برسه که بتونیم رقم بزنیمشون.',
+    sub2:'این لحظات و تجربیات شاید خیلی ساده و پیش پا افتاده دیده بشن ولی چون با تو رقم میخورن برام با ارزش میشن.',
+    cards:[
+      { h:'اولین آرزو',  t:'یک روز بتونیم همو رودر رو ببینیم، بریم باهم قدم بزنیم و حرف بزنیم. یادمه گفتی بودی توی این دیدار قراره خیلی خجالت زده باشی و حتی حرفم نزنی ولی چیزی از صمیمیت مون و اینکه این خاطره قراره چقد قشنگ بشه کم نمیکنه.' },
+      { h:'دومین آرزو',  t:'غزلی امیدوارم یک روز بتونم فراتر از صحبت ها و گفتگو هامون پیش برم و دستپختتو امتحان کنم🫠.' },
+      { h:'سومین آرزو',  t:'یک پیاده روی طولانی باهم داشته باشیم. یه مسیر خیلی طولانی که تهش ندونیم از کجا سر در اوردیم. ولی خب مهم اینه کل مسیرو باهم بودیم و درباره کلی از موضوعات که قبل تر فقط میتونستیم توی تلگرام دربارشون صحبت کنیم صحبت کردیم.' },
+      { h:'در‌آخر',      t:'در‌آخر امیدوارم یه روزی برسه که این جعبه کادو از اتفاقایی که دوست ارم رقم بخوره به اتفاقاتی که رقم خوردن تغییر بکنه...' }
+    ]
+  },
+  puzzle: { q:'هر چی بیشتر روشن می‌مونم، کوتاه‌تر می‌شم و تاریکی رو کنار می‌زنم. من کی‌ام؟',
+            options:['شمع','ابر','یخ'], answer:0, hint:'دنبالش توی اتاق دفتر خاطرات بگرد 🕯️', ok:'آفرین! ✨ گربه کلی خوشحال شد.' },
+
+  candleText:'بعضی آدما حتی با کیلومتر ها فاصله میتونن دنیای اطرافمون رو روشن کنن. مثه تو فرشته کوچولوی من.',
+  candleHint:'شمع‌ها رو روشن کن 🕯️', candleNeed:'اول یه شمع روشن کن 🕯️',
+  letters: [
+    { env:'assets/props/env1.png', paper:'assets/props/paper1.jpg', ink:'#4a3228', seal:{x:50,y:76}, label:'حرفایی که هیچوقت نگفتم', file:'نامه-اول-حرفایی-که-هیچوقت-نگفتم',
+      title:'یچیزایی هست که هیچوقت دربارشون صحبت نکردیم ولی دوست دارم که اینجا بگمشون.',
+      text:'غزل میخوام از اولین بار که توی گپمون توی روبیکا دیدمت شروع کنم. اونجا من یه دختر خانمی به نام غزل و با پروفایل یه پونی کوچولو دیدم. رفته رفته دیدم چقد ینفر میتونه کوچولو و بامزه باشه. راستش اولین لحظه که دیدمت رو دقیق یادم نیست ولی اصلا فکر نمی‌کردم که یروز این دختر انقد آدم مهمی بشه توی زندگیم ولی الان متوجه میشم که چقد زندگی ممکنه متفاوت تر از دیدگاهم رقم بخوره...\n\nرفته رفته صمیمی تر شدیم و نزدیک تر شدیم\nتوی روبیکا چه تایمایی رو که نگذروندیم... چه عروسی هااا چه صحبت هااا و داستان هااا\nولی خب هیچوقت فکر نمیکردم به همچین صمیمیتی با یه دختر کوچولوی ساکن اردبیل برسم😂.‌ البته باید اینم بدونی... من هیچوقت نمیخواستم باهات این مقدار صمیمی بشم راستش از صمیمیت میترسیدم... میترسیدم با ینفر کلی صحبت کنم، کلی از چیزایی که ممکنه برای هیچکس نگم رو برای اون ینفر بگم ولی بعد دوستی مون خراب بشه و همه صحبتام با اون فرد تبدیل به خاطره بشه. ولی رفته رفته دیدم دارم بیشتر بهت نزدیک میشم، داریم باهم صمیمی تر میشیم و خب یجایی از این موضوع میترسیدم و الان بابت رقم خوردنش بی نهایت سپاسگذارم.\n\nغزل باید بدونی توی این زمانی که یکی از تنها ترین نسخه های خودمم تو نزدیک ترین فرد بهمی\nحرفا و چیزایی که توی ذهنم میگذره رو میدونی\nاز خواسته های واقعیم خبر داری\nواقعا برام ارزشمندی🤍' },
+    { env:'assets/props/env2.png', paper:'assets/props/paper2.jpg', ink:'#4a1424', seal:{x:50,y:67}, label:'برای روز هایی که حالت خوب نیست', file:'نامه-دوم-برای-روزهایی-که-حالت-خوب-نیست',
+      title:'غزل ازت میخوام این مورد رو وقتایی که حالت خوب نیست بخونی. وقتایی که نمیدونی درباره چیزی که حالتو بد کرده با کی صحبت کنی(البته که میتونی با خودم صحبت کنی ولی درک میکنم یه تایمایی نمیشه)',
+      text:'اول از همه باید بدونی تو واقعااا با ارزشی. تو بهترین نسخه خودتی، بهترین کسی هستی که میتونی باشی، پس هیچوقتتت با حرفا و رفتارا و چیزایی که از افراد مختلف میبینی خودت را ناراحت و غمگین نکن.\n\nناراحت بودن و یا خسته بودن طبیعیه و جزوی از مسیره\nو خب فدای یه تار از موهات که حالت خوب نیست، میتونی بیای پیش خودم و باهام دربارش صحبت کنی(همیشه هستم که گوش کنم) اگه حرف زدن دربارش حالتو بهتر میکنه اگرم نه میتونی بری باشگاه، معلومه که باشگاه و ورزش خیلی حالتو بهتر میکنن. میتونی بنویسیشون و کاغذو از بین ببری و بندازیش آشغالی ولی بعد از همه اینا باید بلند شی و سعی کنی مشکلو بر طرف کنی. چون میدونم خیلی خانم قوی ای هستی این بلند شدن رو خودت میسپارم.\n\nغزل این مورد خیلی مهمه: نیازی نیست همیشه تلاش کنی که قوی بنظر بیای. میدونم شما خیلی قوی و مستقلی ولی بازم ادمی نیاز به همراه و یاور داره پس سعی نکن همه چی رو تنهایی بدوش بکشی🫂\n\nغزل بدون هرچی بشه، هر اتفاقی برای دوستیمون بیفته، چندین وقت از هم بی خبر باشیم و یا هر چیز دیگه ای ما بازم باهم دوستیم و میتونی هر زمانی که میخوای بهم تکیه کنی.' }
+  ],
+  diary: {
+    p1:{ title:'اگر بخوام تورو توصیف کنم...',
+         text:'اگر بخوام تورو توصیف کنم میتونم با سیلی از کلمات بیام سراغت و کلی از صفت های زیبا و دوست داشتنیت رو نشونت بدم، مثلا: تو یه دختر کوچولو و دوست داشتنی و تو دل برویی و در عین حال گاهی میتونی خیلی بزرگونه و با عمق صحبت کنی که حتی جا بخورم که این همون غزلیه؟😂\n\nتو خیلی مسئولیت پذیر و قابل اتکایی ولی گاهی اوقات انقد به خودت سخت میگیری که باعث میشه این صفت های زیبات رو نبینی.\n\nتو حتی یه خواهر بزرگه مهربون و مراقبی اما خب گاهی اوقات ممکنه ابجیت یکم زیادی اذیتت کنه و از دستش ناراحت شی ولی تو بازم اون نقش مراقب رو از دست نمیدی.\n\nیکی از زیبا ترین صفت هات اینه که همیشه خودتی. یعنی سعی و تلاش نمیکنی ادای کسی رو در بیاری\nتوی این زمانی که همه در حال بازیگری ان تو واقعا غزلی، تو خودتی.' },
+    p2:{ title:'سه چیزی که منو یاد تو میندازه',
+         a:'میدونی؟ هر موقع یه چیز گوگولی و نانازی میبینم یادت میفتم؟',
+         b:'رنگای صورتی و بنفش منو یاد حال و هوای گوگولی طور تو میندازن فرشته کوچولو\n\nمیدونی چه زمانی میتونه منو یاد تو بندازه؟ بعد از یه روز خسته کننده و سنگین، اون زمانی که میتونم بیام برات روزمو تعریف کنم...' },
+    p3:{ title:'اگر یکم روز کنار هم بودیم',
+         text:'یه روز اگه بتونیم باهم باشیم دوست دارم یه روز طولانی و بی پایان باشه.‌ دوست دارم اگه شهر شما بود منو ببری و جاهایی که دوسشون داری رو نشونم بدی و یا اگه شهر من بود ببرمت و توی کل شهر بچرخونمت و نشونت هر جایی که قبلا برات ازش گفتم چه شکلیه... اون جایی که قرار گذاشتیم ساعت سه شب بیایم جن احضار کنیم رو یادته؟ اونجا رو نشونت میدم، باشگاهمو نشونت میدم، و هرجایی که دوست دارم باهات برم...\n\nدوست دارم توی اون روز بریم سینما فیلم ببینیم به سلیقه توو..\nدوست دارم بریم یه پیاده روی طولانی و کلی صحبت کنیم...\nدوست دارم اون تایمو باهم بگذرونیم🫠🫠' },
+    p4:{ title:'حالا نوبت توست و میخوام اینجا رو تو جواب بدی.',
+         qs:['اولین حست وقتی وارد سایتت شدی و صفحه اول رو دیدی چی بود؟','بخش مورد علاقت کدوم بود فرشته خانم؟','اگه بخوای به بخش خاطراتی که دوست داریم باهم رقم بزنیم چیزی اضافه کنی اون چیه؟','آرزو هات برای خودت در سال جدید چیان غزل من؟'],
+         note:'(ببخشید ممکنه خجالت آور باشه ولی این قسمت نیاز داره که با یه اسکرین شات از طرف شما برای من ارسال بشه، امکانش هست عکس بگیری و بفرستی؟)' }
+  },
+
+  // آهنگ‌ها: file = مسیر بدون پسوند (mp3/m4a/ogg/wav) ، cover = مسیر بدون پسوند (jpg/png/webp)
+  songs: [
+    { title:'A Little More Country Than That', artist:'Easton Corbin', tag:'آهنگی برای لبخندت', file:'assets/music/1', cover:'assets/covers/1',
+      note:'بعضی آهنگ ها نوشته و خونده میشن برای بخشیدن به لبخند به ما، از نظرم این یکی از اون موارده... اینو فقط به این امید گذاشتم اینجا که باعث لبخند زدنت بشه.' },
+    { title:'Bloom', artist:'The paper kites', tag:'برای بخشیدن آرامش بهت', file:'assets/music/2', cover:'assets/covers/2',
+      note:'من از گوش دادن به این موزیک فقط میتونم به آرامش خاطر برسم و این دلیلیه که انتخابش کردم برای تو؛ امیدوارم به توهم این آرامش رو بده. این برای لحظاتیه که ذهنت شلوغه و دوست داری چند دقیقه ای از همچی فاصله بگیری.' },
+    { title:'Heaven and back', artist:'chase atlantic', tag:'برای مورد پسندت واقع شدن', file:'assets/music/3', cover:'assets/covers/3',
+      note:'این چیزیه که از سلیقه ات(امیدوارم همینطور باشه) دزدیدم و توی پلی لیست سایت گذاشتم. موزیکیه که حس میکنم توهم دوسش داری و از قبل میشناسیش.' },
+    { title:'Fekr mikone tanhast', artist:'Hooman', tag:'برای دیدارمون', file:'assets/music/4', cover:'assets/covers/4',
+      note:'این آهنگ بنظرم از همه خاص تره؛ این رو برای روزی انتخاب کردم که قراره توی یه پارک کنار هم بشینیم و با یه هندزفری سیمی اینو گوش بدیم و لذت ببریم. امیدوارم در آینده این تبدیل به یکی از زیباترین خاطرات مون بشه.' }
+  ],
+  coverHead:'پلی‌لیست غزل', coverSub:'روی هر آهنگ بزن و پخش رو خودت شروع کن',
+
+  final: {
+    top:'یه هدیه مونده که نمیشد توی هیچ جعبه ای گذاشت...',
+    open:'صدای من را بشنو',
+    last:'تولدت مبارک فرشته کوچولو من. ممنون که تو این دنیا هستی'
+  }
+};
+/* ====================================================================================== */
+
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const stage=$('#stage');
+const IMG_EXT=['.jpg','.jpeg','.png','.webp'], AUD_EXT=['.mp3','.m4a','.ogg','.wav'];
+
+/* ---------- ذخیره‌سازی پیشرفت (روی خود گوشی) ---------- */
+const KEY='ghazal_birthday_v2';
+let S={scene:0,gifts:[0,0,0,0],stars:0,mem:[],letters:[0,0],diary:0,ans:['','','',''],ansSaved:0,track:-1,sfx:1,candles:[],dedi:0,fin:0};
+try{const r=JSON.parse(localStorage.getItem(KEY)||'null'); if(r&&typeof r==='object') S=Object.assign(S,r);}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+
+/* ---------- افکت صوتی ظریف (قابل خاموش کردن) ---------- */
+let AC=null;
+const ac=()=>{ if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}} if(AC&&AC.state==='suspended')AC.resume(); return AC; };
+function tone(f,t0,d,v,ty){const c=ac(); if(!c)return; const o=c.createOscillator(),g=c.createGain(),n=c.currentTime+t0; o.type=ty||'sine'; o.frequency.value=f;
+  g.gain.setValueAtTime(.0001,n); g.gain.linearRampToValueAtTime(v,n+.03); g.gain.exponentialRampToValueAtTime(.0001,n+d); o.connect(g); g.connect(c.destination); o.start(n); o.stop(n+d+.05);}
+function noise(d,v,fq){const c=ac(); if(!c)return; const b=c.createBuffer(1,c.sampleRate*d,c.sampleRate),a=b.getChannelData(0);
+  for(let i=0;i<a.length;i++) a[i]=(Math.random()*2-1)*Math.pow(1-i/a.length,2);
+  const s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain(); f.type='bandpass'; f.frequency.value=fq; g.gain.value=v; s.buffer=b; s.connect(f); f.connect(g); g.connect(c.destination); s.start();}
+function sfx(k){ if(!S.sfx) return; const v=.05;
+  const m={open:()=>[523,659,784,1047].forEach((f,i)=>tone(f,i*.09,.55,v)), star:()=>{tone(1319,0,.7,v*.8);tone(1760,.1,.8,v*.55)}, flame:()=>noise(.5,v*1.6,1800),
+           page:()=>noise(.4,v*2,900), pop:()=>tone(880,0,.15,v), ok:()=>{tone(659,0,.2,v);tone(988,.12,.4,v)}}; try{(m[k]||(()=>{}))();}catch(e){} }
+
+/* ---------- ابزارها ---------- */
+function toast(msg){const t=$('#toast2');t.textContent=msg;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2400);}
+function burst(x,y,list,n){const r=stage.getBoundingClientRect();
+  for(let i=0;i<n;i++){const s=document.createElement('span');s.className='burst';s.textContent=list[i%list.length];
+    s.style.left=(x-r.left)+'px';s.style.top=(y-r.top)+'px';const a=rnd(0,Math.PI*2),d=rnd(50,130);
+    s.style.setProperty('--bx',Math.cos(a)*d+'px');s.style.setProperty('--by',Math.sin(a)*d-30+'px');stage.appendChild(s);setTimeout(()=>s.remove(),1400);}}
+function dlText(name,text){const b=new Blob(['﻿'+text],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name+'.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000);}
+function dlUrl(url,name){const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();}
+function firstImg(base,ok,fail){let i=0;const t=()=>{ if(i>=IMG_EXT.length){fail&&fail();return;} const ext=IMG_EXT[i++],im=new Image(); im.onload=()=>ok(base+ext,ext); im.onerror=t; im.src=base+ext;}; t();}
+function setAudio(a,base,onFail){let i=0; a._missing=false; const next=()=>{ if(i>=AUD_EXT.length){a._missing=true;a.onerror=null;onFail&&onFail();return;} a._ext=AUD_EXT[i]; a.src=base+AUD_EXT[i++]; }; a.onerror=next; next();}
+
+/* پس‌زمینهٔ عکس (اختیاری) */
+$$('.scene').forEach(s=>{ const url=CONFIG.bg[s.id]; if(!url) return;
+  const im=new Image(); im.onload=()=>{ $('.bg',s).style.backgroundImage=`url("${url}")`; s.classList.add('has-bg'); }; im.src=url; });
+
+/* ستاره‌ها، ریسه، پرچم، گل‌ها، بارون */
+['s1','s4','s5'].forEach(id=>{ const el=$('.stars',document.getElementById(id));
+  for(let i=0;i<34;i++){const d=document.createElement('i'),z=rnd(1,3);
+    d.style.cssText=`left:${rnd(0,100)}%;top:${rnd(0,id==='s1'?45:60)}%;width:${z}px;height:${z}px;animation-delay:${-rnd(0,3)}s;animation-duration:${rnd(2,5)}s`; el.appendChild(d);} });
+$$('.lights').forEach(svg=>{ const path=$('path',svg),len=path.getTotalLength();
+  for(let i=1;i<14;i++){const p=path.getPointAtLength(len*i/14),c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',p.x);c.setAttribute('cy',p.y+.6);c.setAttribute('r',.7);c.setAttribute('fill',['#ffd98a','#ff9ec7','#b79cff'][i%3]);c.style.animationDelay=(-i*.3)+'s';svg.appendChild(c);} });
+(function(){const NS='http://www.w3.org/2000/svg';
+  const svg=$('#bunt1'),cols=['#ff7eb6','#ffd98a','#9b7bff','#6fd1c4','#ffffff'];
+  const P=t=>({x:-5+370*t,y:(1-t)*(1-t)*6+2*t*(1-t)*58+t*t*6});
+  const l=document.createElementNS(NS,'path');l.setAttribute('d','M-5 6 Q180 110 365 6');l.setAttribute('stroke','#d9c9ff');l.setAttribute('stroke-width','1');l.setAttribute('fill','none');svg.appendChild(l);
+  for(let i=1;i<=16;i++){const p=P(i/17),t=document.createElementNS(NS,'path');t.setAttribute('d',`M${p.x-9} ${p.y} L${p.x+9} ${p.y} L${p.x} ${p.y+24}Z`);t.setAttribute('fill',cols[i%5]);t.setAttribute('opacity','.92');svg.appendChild(t);}
+  const g=$('#fl1');for(let i=0;i<22;i++){const c=document.createElementNS(NS,'circle');c.setAttribute('cx',rnd(8,352));c.setAttribute('cy',rnd(535,625));c.setAttribute('r',rnd(1.6,3));c.setAttribute('fill',['#ff9ec7','#ffd98a','#fff','#b79cff'][i%4]);c.setAttribute('opacity','.85');g.appendChild(c);}
+  const r=$('#rain3');for(let i=0;i<26;i++){const l2=document.createElementNS(NS,'line'),x=rnd(104,256);l2.setAttribute('x1',x);l2.setAttribute('x2',x-3);l2.setAttribute('y1',30);l2.setAttribute('y2',44);l2.style.animation=`rainf ${rnd(.7,1.3)}s linear ${-rnd(0,1.3)}s infinite`;r.appendChild(l2);}
+  const s=$('#gst3');for(let i=0;i<14;i++){const c=document.createElementNS(NS,'circle');c.setAttribute('cx',rnd(112,248));c.setAttribute('cy',rnd(46,110));c.setAttribute('r',rnd(.6,1.3));c.setAttribute('fill','#fff');c.setAttribute('opacity',rnd(.4,.9));s.appendChild(c);}
+  const st=document.createElement('style');st.textContent='@keyframes rainf{from{transform:translateY(0)}to{transform:translateY(150px)}}';document.head.appendChild(st);
+  const eq=$('#eq');for(let i=0;i<18;i++){const b=document.createElement('i');b.style.animationDuration=rnd(.5,1.2)+'s';b.style.animationDelay=(-rnd(0,1))+'s';eq.appendChild(b);} })();
+const FX={hearts:['💗','💖','💞','✨','🌸','💕'],confetti:['🎉','✨','🎀','💜','🎈','⭐'],notes:['🎵','🎶','♪','♫','💜'],sparkles:['✨','💫','⭐','🌸','✨'],dust:['dot']};
+$$('.fx').forEach(el=>{const list=FX[el.dataset.fx]||[],n=el.dataset.fx==='dust'?18:14;
+  for(let i=0;i<n;i++){const s=document.createElement('span'),k=list[i%list.length];
+    if(k==='dot'){s.className='dot';}else{s.textContent=k;s.style.fontSize=rnd(12,22)+'px';}
+    s.style.left=rnd(2,96)+'%';s.style.setProperty('--dx',rnd(-40,40)+'px');s.style.setProperty('--rot',rnd(-40,40)+'deg');
+    s.style.animationDuration=(el.dataset.fx==='dust'?rnd(14,24):rnd(9,18))+'s';s.style.animationDelay=(-rnd(0,18))+'s';el.appendChild(s);} });
+
+/* گربهٔ سیاه */
+const CAT=`<svg viewBox="0 0 120 150"><g class="tail"><path d="M88 128C122 128 120 92 104 86" stroke="#0c0c16" stroke-width="10" fill="none" stroke-linecap="round"/></g>
+<ellipse cx="60" cy="116" rx="34" ry="32" fill="#0c0c16"/><ellipse cx="46" cy="142" rx="12" ry="6" fill="#14141f"/><ellipse cx="74" cy="142" rx="12" ry="6" fill="#14141f"/>
+<g class="head"><path d="M32 46 34 14 54 32Z" fill="#0c0c16"/><path d="M88 46 86 14 66 32Z" fill="#0c0c16"/>
+<path d="M37 38 38 23 48 32Z" fill="#c76b98"/><path d="M83 38 82 23 72 32Z" fill="#c76b98"/><circle cx="60" cy="60" r="30" fill="#0c0c16"/>
+<ellipse cx="48" cy="58" rx="6.5" ry="7.5" fill="#ffd45e"/><ellipse cx="72" cy="58" rx="6.5" ry="7.5" fill="#ffd45e"/>
+<ellipse cx="48" cy="58" rx="1.7" ry="6" fill="#0c0c16"/><ellipse cx="72" cy="58" rx="1.7" ry="6" fill="#0c0c16"/>
+<circle cx="50" cy="55" r="1.6" fill="#fff"/><circle cx="74" cy="55" r="1.6" fill="#fff"/>
+<path d="M57 68 63 68 60 72Z" fill="#ff9ec7"/><path d="M60 72Q55 77 51 74M60 72Q65 77 69 74" stroke="#5a5a70" stroke-width="1.2" fill="none"/>
+<path d="M30 66 14 62M30 70 14 72M90 66 106 62M90 70 106 72" stroke="#8a8aa6" stroke-width=".9"/></g>
+<path d="M60 92 44 83 44 101Z" fill="#ff7eb6"/><path d="M60 92 76 83 76 101Z" fill="#ff7eb6"/><circle cx="60" cy="92" r="5" fill="#ff9ec7"/></svg>`;
+$$('.cat').forEach(c=>{c.insertAdjacentHTML('afterbegin',CAT);c.insertAdjacentHTML('beforeend',`<div class="bubble">${esc(c.dataset.say||'میو~')}</div>`);
+  c.addEventListener('click',()=>{c.classList.add('say');clearTimeout(c._t);c._t=setTimeout(()=>c.classList.remove('say'),1800);});});
+
+/* شخصیت‌ها */
+function mkChar(p,parent){
+  const d=document.createElement('div'); d.className='char a-'+(p.a||'float');
+  d.style.cssText=`left:${p.x}%;bottom:${p.b}%;width:${p.w}%;animation-delay:${p.d||0}s`;
+  const img=new Image(); img.alt=''; img.decoding='async'; if(p.flip) img.style.transform='scaleX(-1)';
+  img.onerror=()=>{img.remove(); if(CONFIG.placeholders){const h=document.createElement('div');h.className='chph';h.textContent=CONFIG.charNames[p.c]||p.c;d.appendChild(h);}};
+  img.src=CONFIG.chars[p.c]||''; d.appendChild(img); parent.appendChild(d); return d; }
+Object.entries(CONFIG.peeks).forEach(([sid,list])=>{const sc=document.getElementById(sid); list.forEach(p=>{const d=mkChar(p,sc); if(sid==='s5') d.classList.add('hc');});});
+
+/* ---------- مودال ---------- */
+const modal=$('#modal'),mbody=$('#mbody'),mnav=$('#mnav'),mcard=$('#mcard');
+function openModal(html,pages,cls,onPage){
+  let i=0; mcard.className='card'+(cls?' '+cls:'');
+  const render=()=>{ mbody.innerHTML=pages?pages[i]:html; mnav.innerHTML='';
+    if(pages&&pages.length>1){
+      mnav.innerHTML=`<button id="mdq" ${i==0?'disabled':''}>قبلی</button><span>${fa(i+1)} / ${fa(pages.length)}</span><button id="mdn" ${i==pages.length-1?'disabled':''}>بعدی</button>`;
+      $('#mdn').onclick=()=>{i++;render();};$('#mdq').onclick=()=>{i--;render();}; }
+    mcard.scrollTop=0; if(onPage) onPage(i); };
+  render(); modal.classList.add('on'); }
+const closeModal=()=>modal.classList.remove('on');
+$('#mx').onclick=closeModal; modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+const charImg=c=>CONFIG.chars[c]?`<img class="cimg" src="${CONFIG.chars[c]}" alt="" onerror="this.remove()">`:'';
+
+/* ---------- پیشرفت / صفحهٔ ۱ ---------- */
+const giftsOpened=()=>S.gifts.filter(Boolean).length;
+function updProg(){
+  const n=giftsOpened(), W=CONFIG.welcome;
+  $('#prog1').innerHTML=`<div class="gi">${CONFIG.gifts.map((g,i)=>`<i class="${S.gifts[i]?'on':''}">${S.gifts[i]?'✨':'🎁'}</i>`).join('')}</div>
+    <div>${n?`هدیه‌های باز شده: ${fa(n)} از ${fa(4)}`:'هنوز هدیه‌ای باز نشده — هر وقت دلت خواست 💗'}</div><div class="path">${esc(W.path)}</div>
+    ${(S.scene>0||n)?'<button class="rst" id="rstBtn">پاک‌کردن پیشرفت و شروع از اول</button>':''}`;
+  const rb=$('#rstBtn'); if(rb) rb.onclick=()=>{ if(confirm('پیشرفت و جواب‌های ذخیره‌شده پاک بشن؟')){ try{localStorage.removeItem(KEY)}catch(e){} location.reload(); } };
+  $('#giftHead').innerHTML=`${esc(CONFIG.giftHead)}<small>هدیه‌های باز شده: ${fa(n)} از ${fa(4)}</small>`;
+  $('#startBtn').textContent=S.scene>0?W.resume:W.start;
+  $$('#gifts .gift').forEach((g,i)=>g.classList.toggle('done',!!S.gifts[i]));
+}
+const W0=CONFIG.welcome;
+$('#wTo').textContent=W0.to; $('#wTitle').textContent=W0.title; $('#wDate').textContent=W0.date; $('#wAge').textContent=W0.age; $('#wSub').textContent=W0.sub;
+$('#startBtn').onclick=e=>{ sfx('pop');
+  if(S.scene>0){ burst(e.clientX||200,e.clientY||300,['💗','✨'],8); go(S.scene); return; }
+  const D=CONFIG.dedication;
+  openModal(`<div class="big">${esc(D.hearts)}</div><div class="tx">${esc(D.text)}</div><button class="btn" id="enterBtn">${esc(D.button)}</button>`,null,'dedi');
+  $('#enterBtn').onclick=()=>{ S.dedi=1; go(1); };
+  burst(e.clientX||innerWidth/2,e.clientY||innerHeight/2,['💗','💖','💞','💝','✨'],16); };
+$('#cat1').addEventListener('click',()=>openModal(`<div class="tx" style="text-align:center;font-size:1.25em;line-height:2;font-weight:400">${esc(CONFIG.catMsg)}</div>`,null,'dedi'));
+
+/* ---------- صفحهٔ ۲: چهار هدیه ---------- */
+const giftSVG=(col,rib)=>`<svg viewBox="0 0 100 100"><rect x="12" y="44" width="76" height="50" rx="5" fill="${col}"/><rect x="45" y="44" width="10" height="50" fill="${rib}"/>
+<g class="lid"><rect x="8" y="30" width="84" height="18" rx="5" fill="${col}" stroke="rgba(255,255,255,.35)"/><rect x="45" y="30" width="10" height="18" fill="${rib}"/>
+<path d="M50 30C36 10 22 22 50 30ZM50 30C64 10 78 22 50 30Z" fill="${rib}"/><circle cx="50" cy="30" r="4" fill="${rib}"/></g></svg>`;
+$('#giftHint').textContent=CONFIG.giftHint;
+CONFIG.gifts.forEach((g,i)=>{
+  const cell=document.createElement('div'); cell.className='gcell';
+  cell.style.left=(i%2?'51%':'3%'); cell.style.top=(23+Math.floor(i/2)*25)+'%';
+  const right=g.side!=='left';
+  mkChar({c:g.c,x:right?50:0,b:15,w:50,a:g.a||'sway',d:i*.3},cell);
+  const d=document.createElement('div'); d.className='gift g'+i; d.style.left=right?'4%':'56%';
+  d.innerHTML=`<div class="tap"></div>`+giftSVG(g.color,g.ribbon);
+  d.onclick=()=>{ if(d._busy) return; d._busy=true; d.classList.add('open'); sfx('open');
+    const r=d.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height*.4,g.fx,6);
+    setTimeout(()=>{ S.gifts[i]=1; save(); updProg(); GIFT[g.id](); d.classList.remove('open'); d._busy=false; },650); };
+  cell.appendChild(d); cell.insertAdjacentHTML('beforeend',`<div class="glab">${esc(g.label)}</div>`);
+  $('#gifts').appendChild(cell); });
+
+const para=t=>t.split(/\n{2,}/).map(p=>`<p>${esc(p).replace(/\n/g,'<br>')}</p>`).join('');
+const GIFT={
+  /* ۱) آینهٔ شخصیت: مقدمه + پنج انعکاس جدا */
+  mirror(){ const M=CONFIG.mirror, N=M.notes;
+    const pages=[`<h3>${esc(M.title)}</h3><div class="mir intro"><div class="tx">${esc(M.intro)}</div></div><div class="pdots">${[0,1,2,3,4,5].map(j=>`<i class="${j==0?'on':''}"></i>`).join('')}</div>`]
+      .concat(N.map((t,k)=>`<h3>${esc(M.title)}</h3><div class="mir"><div class="n">انعکاس ${fa(k+1)} از ${fa(N.length)} ✨</div><div class="tx">${esc(t)}</div></div><div class="pdots">${[0,1,2,3,4,5].map(j=>`<i class="${j==k+1?'on':''}"></i>`).join('')}</div>`));
+    openModal('',pages,'',i=>{ if(i>0) sfx('star'); if(i==pages.length-1){ const x=document.createElement('div'); x.className='dlrow'; x.innerHTML='<button id="dlMir">💾 دانلود متن آینه</button>'; mbody.appendChild(x); $('#dlMir').onclick=()=>dlText('آینه-شخصیت',M.title+'\n\n'+M.intro+'\n\n'+N.map((t,k)=>`${k+1}) ${t}`).join('\n\n')); } }); },
+  /* ۲) روزنامه */
+  paper(){ const P=CONFIG.paper;
+    openModal(`<h3>${esc(P.title)}</h3><div id="npBox"><div class="empty">در حال بارگذاری…</div></div><div class="dlrow" id="npDl" style="display:none"><button id="npDlb">💾 دانلود روزنامه</button></div>`,null,'');
+    firstImg(CONFIG.files.newspaper,(url,ext)=>{ const b=$('#npBox'); if(!b) return; b.innerHTML=`<div class="zoomwrap" id="zw"><img src="${url}" alt="${esc(P.title)}"></div><div class="note" style="text-align:center">برای بزرگ‌کردن روی عکس بزن</div>`;
+        $('#zw').onclick=()=>$('#zw').classList.toggle('z'); $('#npDl').style.display='flex'; $('#npDlb').onclick=()=>dlUrl(url,'Ghazal-Times'+ext); },
+      ()=>{ const b=$('#npBox'); if(b) b.innerHTML=`<div class="empty">${esc(P.missing).replace(/\n/g,'<br>')}</div>`; }); },
+  /* ۳) ستاره‌های آرزو: یکی‌یکی روشن می‌شن */
+  stars(){ const W=CONFIG.stars.wishes, pos=[[18,30],[40,18],[60,44],[78,24],[84,62]]; let lit=Math.min(S.stars||0,W.length), cur=lit-1;
+    openModal(`<h3>${esc(CONFIG.stars.title)}</h3><div class="sky" id="sky"><svg viewBox="0 0 100 100" preserveAspectRatio="none" id="skysvg"></svg>${pos.map((p,i)=>`<div class="sstar" data-i="${i}" style="left:${p[0]}%;top:${p[1]}%">✦</div>`).join('')}</div>
+      <div class="wtext tx" id="wt"></div><div class="mnav"><button id="stPrev">قبلی</button><button class="btn sm" id="stNext"></button></div><div class="dlrow"><button id="stDl">💾 دانلود آرزوها</button></div>`,null,'');
+    const ss=$$('#sky .sstar'), svg=$('#skysvg'), wt=$('#wt');
+    const draw=()=>{ svg.innerHTML=''; for(let i=1;i<lit;i++){ svg.insertAdjacentHTML('beforeend',`<line x1="${pos[i-1][0]}" y1="${pos[i-1][1]}" x2="${pos[i][0]}" y2="${pos[i][1]}"/>`);} };
+    const show=i=>{ cur=i; ss.forEach((s,k)=>{s.classList.toggle('on',k<lit);s.classList.toggle('cur',k==cur);}); wt.style.opacity=0; setTimeout(()=>{wt.innerHTML=i>=0?`<div class="mir"><div class="n">ستارهٔ ${fa(i+1)} از ${fa(W.length)} ✦</div>${esc(W[i])}</div>`:'<div class="note">ستاره‌ها رو یکی‌یکی روشن کن ✨</div>';wt.style.opacity=1;},250);
+      $('#stNext').textContent=lit>=W.length?'همهٔ ستاره‌ها روشن شد ✓':'ستارهٔ بعدی ✨'; $('#stNext').disabled=lit>=W.length&&cur>=W.length-1&&false; $('#stPrev').disabled=cur<=0; draw(); };
+    ss.forEach((s,k)=>s.onclick=()=>{ if(k<lit){ show(k); sfx('star'); } });
+    $('#stNext').onclick=()=>{ if(lit<W.length){ lit++; sfx('star'); show(lit-1); S.stars=Math.max(S.stars||0,lit); save(); } else if(cur<W.length-1){ show(cur+1);} };
+    $('#stPrev').onclick=()=>{ if(cur>0){ show(cur-1); sfx('star'); } };
+    $('#stDl').onclick=()=>dlText('آرزوها',CONFIG.stars.title+'\n\n'+W.map((t,k)=>`${k+1}) ${t}`).join('\n\n'));
+    ss.forEach((s,k)=>{ if(k>=lit) s.classList.remove('on'); }); setTimeout(()=>show(cur),50); },
+  /* ۴) خاطراتی که هنوز نساختیم: کارت‌های بازشونده */
+  memo(){ const M=CONFIG.memo;
+    openModal(`<h3>${esc(M.title)}</h3><div class="tx" style="margin-bottom:.6em">${esc(M.sub1)}</div><div class="tx" style="opacity:.85">${esc(M.sub2)}</div>
+      <div id="mcs">${M.cards.map((c,i)=>`<div class="mc ${(S.mem||[]).includes(i)?'done':''}" data-i="${i}"><div class="mc-h"><span>${esc(c.h)} ${i<M.cards.length-1?'💌':'🎁'}</span><span class="mk">${(S.mem||[]).includes(i)?'✓':'▾'}</span></div><div class="mc-b">${esc(c.t)}</div></div>`).join('')}</div>
+      <div class="dlrow"><button id="mmDl">💾 دانلود متن‌ها</button></div>`,null,'');
+    $$('#mcs .mc').forEach(c=>$('.mc-h',c).onclick=()=>{ const was=c.classList.contains('open'); $$('#mcs .mc').forEach(x=>x.classList.remove('open'));
+      if(!was){ c.classList.add('open','done'); sfx('page'); const i=+c.dataset.i; S.mem=S.mem||[]; if(!S.mem.includes(i)){S.mem.push(i);save();} $('.mk',c).textContent='✓'; setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'nearest'}),400); } });
+    $('#mmDl').onclick=()=>dlText('خاطراتی-که-هنوز-نساختیم',M.title+'\n\n'+M.sub1+'\n'+M.sub2+'\n\n'+M.cards.map(c=>c.h+':\n'+c.t).join('\n\n')); }
+};
+/* معما */
+$('#cat2').addEventListener('click',()=>{
+  const p=CONFIG.puzzle; if(!p) return; let sel=-1,solved=false;
+  openModal(`<h3>معمای گربه 🐈‍⬛</h3><div class="tx">${esc(p.q)}</div><div id="opts">${p.options.map((o,i)=>`<button class="opt" data-i="${i}">${esc(o)}</button>`).join('')}</div>
+  <div class="mnav"><button id="hintB">راهنمایی 💡</button><button class="btn sm" id="subB">ثبت ✓</button></div><div class="note" id="pmsg"></div>`);
+  $$('#opts .opt').forEach(b=>b.onclick=()=>{ if(solved) return; $$('#opts .opt').forEach(x=>x.classList.remove('sel','bad')); b.classList.add('sel'); sel=+b.dataset.i; $('#pmsg').textContent=''; });
+  $('#hintB').onclick=()=>$('#pmsg').textContent=p.hint;
+  $('#subB').onclick=()=>{ if(solved){closeModal();return;} if(sel<0){$('#pmsg').textContent='اول یه گزینه انتخاب کن 🙂';return;}
+    const b=$(`#opts .opt[data-i="${sel}"]`);
+    if(sel===p.answer){solved=true;b.classList.remove('sel');b.classList.add('good');$('#pmsg').textContent=p.ok;$('#subB').textContent='بستن';sfx('ok');}
+    else{b.classList.remove('sel');void b.offsetWidth;b.classList.add('bad');sel=-1;$('#pmsg').textContent='نه، دوباره امتحان کن 🌙';} }; });
+
+/* ---------- صفحهٔ ۳: شمع‌ها ---------- */
+$('#candleText').textContent=CONFIG.candleText; $('#candleHint').textContent=CONFIG.candleHint;
+const DIM=[.8,.6,.42,.24,.05]; let lit=0;
+function applyCandles(){ lit=$$('.candle.on').length; $('#dim').style.opacity=DIM[lit]; $('#candleHint').style.opacity=lit?0:1; S.candles=$$('.candle').map((c,i)=>c.classList.contains('on')?i:-1).filter(i=>i>=0); save(); }
+$$('.candle').forEach(c=>c.onclick=()=>{ c.classList.toggle('on'); if(c.classList.contains('on')){ sfx('flame'); const r=c.getBoundingClientRect(); burst(r.left+r.width/2,r.top,['✨','🔥'],4);} applyCandles(); });
+(S.candles||[]).forEach(i=>{const c=$$('.candle')[i]; if(c) c.classList.add('on');}); lit=(S.candles||[]).length; $('#dim').style.opacity=DIM[Math.min(lit,4)]; if(lit) $('#candleHint').style.opacity=0;
+$('#cat3').addEventListener('click',()=>{ if(!lit) toast(CONFIG.candleNeed); });
+const needLight=()=>{ if(lit) return false; toast(CONFIG.candleNeed); return true; };
+
+/* ---------- نامه‌ها (با صفحه‌بندی خودکار روی کاغذ) ---------- */
+const lt=$('#lt'),ltstack=$('#ltstack'),ltenv=$('#ltenv'),lttext=$('#lttext');
+$$('#s3 .prop[data-l]').forEach(p=>p.onclick=()=>{ if(needLight()) return; $('#toast2').classList.remove('on'); openLetter(+p.dataset.l); });
+function tokens(L){ const out=[]; L.title.split(/\s+/).forEach(w=>out.push({w,b:1})); out.push('\n','\n');
+  L.text.split('\n').forEach((line,k,arr)=>{ line.split(/[ \t]+/).filter(Boolean).forEach(w=>out.push({w})); if(k<arr.length-1) out.push('\n'); }); return out; }
+const tokHTML=a=>a.map(t=>t==='\n'?'\n':(t.b?`<b>${esc(t.w)}</b>`:esc(t.w))).join(' ').replace(/ ?\n ?/g,'\n');
+function paginate(el,toks){ const pages=[]; let cur=[]; const full=el.style.height; el.style.height='77.4cqw'; /* ۱۴ خط؛ یک خط امن می‌مونه */
+  for(const t of toks){ if(!cur.length&&t==='\n') continue; const test=cur.concat([t]); el.innerHTML=tokHTML(test);
+    if(cur.length&&el.scrollHeight>el.clientHeight+2){ pages.push(tokHTML(cur).replace(/\n+$/,'')); cur=(t==='\n')?[]:[t]; } else cur=test; }
+  if(cur.length) pages.push(tokHTML(cur).replace(/\n+$/,'')); el.style.height=full; el.innerHTML=''; return pages; }
+let ltBusy=false;
+function openLetter(idx){
+  const L=CONFIG.letters[idx]; if(!L) return; let i=0, opened=false, pages=[];
+  $('#ltimg').src=L.env; $('#ltpimg').src=L.paper; lttext.style.color=L.ink;
+  const sl=$('#ltseal'); sl.style.left=L.seal.x+'%'; sl.style.top=L.seal.y+'%';
+  ltstack.classList.remove('go'); ltenv.classList.remove('shake'); lttext.classList.remove('on'); lttext.innerHTML='';
+  $('#lthint').style.display=''; $('#ltnav').classList.remove('on'); lt.classList.add('on');
+  const prep=()=>{ pages=paginate(lttext,tokens(L)); };
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(prep);
+  const setPage=()=>{ lttext.classList.remove('on'); sfx('page'); setTimeout(()=>{ lttext.innerHTML=pages[i]||''; lttext.classList.add('on'); },i?260:0);
+    $('#ltnav').innerHTML=`<button id="lq" ${i==0?'disabled':''}>برگ قبل</button><span>${fa(i+1)} / ${fa(pages.length)}</span><button id="dlL">💾 دانلود</button><button id="lp" ${i>=pages.length-1?'disabled':''}>برگ بعد</button>`;
+    $('#lp').onclick=()=>{i++;setPage()};$('#lq').onclick=()=>{i--;setPage()};
+    $('#dlL').onclick=()=>dlText(L.file,L.title+'\n\n'+L.text); };
+  ltenv.onclick=()=>{ if(opened) return; opened=true; if(!pages.length) prep(); $('#lthint').style.display='none'; ltenv.classList.add('shake'); sfx('open');
+    const r=sl.getBoundingClientRect(); burst(r.left+r.width/2,r.top+r.height/2,['💗','✨','💌','💖'],10);
+    setTimeout(()=>ltstack.classList.add('go'),520);
+    setTimeout(()=>{ setPage(); $('#ltnav').classList.add('on'); S.letters[idx]=1; save(); $('#env'+idx).classList.add('seen'); },1900); };
+}
+$('#ltx').onclick=()=>{lt.classList.remove('on');ltstack.classList.remove('go');};
+S.letters.forEach((v,i)=>{ if(v) $('#env'+i).classList.add('seen'); });
+CONFIG.letters.forEach((L,i)=>$('#env'+i).insertAdjacentHTML('beforeend',`<div class="plab">${esc(L.label)}</div>`));
+$('#diaryProp').insertAdjacentHTML('beforeend','<div class="plab" style="font-size:.7em">دفتر خاطرات</div>');
+
+/* ---------- دفتر خاطرات (۴ صفحه، ورق‌خوردن، صفحهٔ آخر قابل نوشتن) ---------- */
+const D=CONFIG.diary, dv=$('#dv'), dvsp=$('#dvsp'), dvlf=$('#dvlf'), dvlfin=$('#dvlfin');
+const DPAGES=[
+  ()=>`<h4>${esc(D.p1.title)}</h4>${para(D.p1.text)}`,
+  ()=>`<h4>${esc(D.p2.title)}</h4><p>${esc(D.p2.a)}</p><div class="stks">${CONFIG.stickers.map((s,i)=>`<img class="stk" data-i="${i}" src="${s}" style="--r:${[-6,4,-3][i]}deg" alt="" onerror="this.style.display='none'">`).join('')}</div><div class="fnote" style="text-align:center;margin:-.3em 0 .4em;font-size:.78em">⬇ برای دانلود هر برچسب، روش بزن</div>${para(D.p2.b)}`,
+  ()=>`<h4>${esc(D.p3.title)}</h4>${para(D.p3.text)}`,
+  ()=>`<h4>${esc(D.p4.title)}</h4><div class="fnote" style="font-size:.78em;margin:-.2em 0 .2em">↓ ${fa(D.p4.qs.length)} سؤال داره؛ برای دیدن بقیه، صفحه رو بکش پایین</div>${D.p4.qs.map((q,i)=>`<label>${fa(i+1)}- ${esc(q)}</label><textarea data-i="${i}" placeholder="جوابت رو اینجا بنویس…"></textarea>`).join('')}
+        <div class="frow"><button id="ansSave">ذخیره ✓</button><button class="g" id="ansDl">دانلود پاسخ‌ها</button></div><div class="fnote" id="ansNote">${S.ansSaved?'ذخیره شده ✓ (روی همین گوشی می‌مونه)':''}</div><div class="fnote">${esc(D.p4.note)}</div>`
+];
+let dvi=0, dvBusy=false;
+const spreadOf=i=>Math.floor(i/2), sideOf=i=>i%2;
+function fitText(el){ el.style.fontSize=''; el.style.lineHeight=''; let fs=1.95; while(el.scrollHeight>el.clientHeight+1&&fs>1.45){ fs-=.05; el.style.fontSize=fs+'cqw'; el.style.lineHeight=(1.68+(fs-1.45)/.5*.27).toFixed(2); } }
+function fillSpread(s){ const L=$('#dvL'),R=$('#dvR'); [[L,2*s],[R,2*s+1]].forEach(([el,pi])=>{ el.innerHTML=DPAGES[pi]?DPAGES[pi]():''; el.scrollTop=0; el.style.fontSize=''; el.style.lineHeight=''; if(pi!==3&&DPAGES[pi]) fitText(el); });
+  $('#pnL').textContent=DPAGES[2*s]?fa(2*s+1):''; $('#pnR').textContent=DPAGES[2*s+1]?fa(2*s+2):'';
+  $$('.dv-t textarea').forEach(t=>{ t.value=S.ans[+t.dataset.i]||''; t.oninput=()=>{ S.ans[+t.dataset.i]=t.value; S.ansSaved=0; save(); const n=$('#ansNote'); if(n) n.textContent='در حال نوشتن… (خودکار هم ذخیره می‌شه)'; }; });
+  $$('.dv-t img').forEach(i=>i.addEventListener('load',()=>{ const t=i.closest('.dv-t'); if(t) fitText(t); }));
+  $$('.dv-t .stk').forEach(im=>{ im.style.cursor='pointer'; im.onclick=()=>{ dlUrl(im.getAttribute('src'),'sticker-'+(+im.dataset.i+1)+'.jpg'); sfx('pop'); toast('برچسب دانلود شد'); }; });
+  $$('.dv-t textarea').forEach(t=>t.addEventListener('focus',()=>setTimeout(()=>{try{t.scrollIntoView({block:'center',behavior:'smooth'})}catch(e){}},350)));
+  const sv=$('#ansSave'); if(sv) sv.onclick=()=>{ S.ansSaved=1; save(); $('#ansNote').textContent='ذخیره شد ✓ (روی همین گوشی می‌مونه)'; sfx('ok'); };
+  const dl=$('#ansDl'); if(dl) dl.onclick=()=>dlText('جواب-های-غزل','جواب‌های غزل\n\n'+D.p4.qs.map((q,i)=>`${i+1}- ${q}\n${S.ans[i]||'(بدون جواب)'}`).join('\n\n')); }
+function dvPos(i,animate){ dvsp.classList.toggle('nt',!animate); dvsp.style.transform=sideOf(i)?'translateX(-50%)':'translateX(0)'; if(!animate){void dvsp.offsetWidth; dvsp.classList.remove('nt');} }
+function dvNav(){ const n=DPAGES.length; $('#dvnav').innerHTML=`<button id="dq" ${dvi==0?'disabled':''}>صفحهٔ قبل</button><span>صفحه ${fa(dvi+1)} از ${fa(n)}</span><button id="dp" ${dvi>=n-1?'disabled':''}>صفحهٔ بعد</button>`;
+  $('#dp').onclick=()=>dvGo(dvi+1); $('#dq').onclick=()=>dvGo(dvi-1); }
+function dvGo(ni){ if(dvBusy||ni<0||ni>=DPAGES.length) return; const os=spreadOf(dvi), ns=spreadOf(ni);
+  if(os===ns){ dvi=ni; dvPos(dvi,true); sfx('page'); dvNav(); S.diary=Math.max(S.diary||0,dvi+1); save(); return; }
+  dvBusy=true; sfx('page'); const fwd=ni>dvi; dvlfin.innerHTML=dvsp.innerHTML; dvlf.className='lf '+(fwd?'f':'b'); dvlf.style.display='block';
+  fillSpread(ns); /* زیر ورق عوض می‌شه */
+  setTimeout(()=>{ dvlf.style.display='none'; dvlf.className='lf'; dvi=ni; dvPos(dvi,true); dvNav(); dvBusy=false; S.diary=Math.max(S.diary||0,dvi+1); save(); },720); }
+$('#diaryProp').onclick=()=>{ if(needLight()) return; $('#toast2').classList.remove('on');
+  dv.classList.remove('open','flip'); dvi=0; dvBusy=false; $('#dvnav').innerHTML=''; dv.classList.add('on'); sfx('open'); void dv.offsetWidth;
+  setTimeout(()=>dv.classList.add('flip'),900);
+  setTimeout(()=>{ dv.classList.add('open'); fillSpread(0); dvPos(0,false); dvNav(); S.diary=Math.max(S.diary||0,1); save(); $('#diaryProp').classList.add('seen'); },1350);
+  $('#dvtop').innerHTML='<button class="dl" id="dvAll">💾 دانلود متن دفتر</button>';
+  $('#dvAll').onclick=()=>dlText('دفتر-خاطرات',[D.p1.title+'\n'+D.p1.text,D.p2.title+'\n'+D.p2.a+'\n'+D.p2.b,D.p3.title+'\n'+D.p3.text,D.p4.title+'\n'+D.p4.qs.map((q,i)=>`${i+1}- ${q}\n${S.ans[i]||''}`).join('\n')].join('\n\n──────\n\n')); };
+$('#dvx').onclick=()=>{dv.classList.remove('on','open','flip');};
+if(S.diary) $('#diaryProp').classList.add('seen');
+
+/* ---------- صفحهٔ ۴: پلی‌لیست + پلیر دائمی ---------- */
+$('#coverHead').innerHTML=`${esc(CONFIG.coverHead)}<small>${esc(CONFIG.coverSub)}</small>`;
+const AU=new Audio(); AU.preload='auto'; let cur=-1;
+const covers=[];   /* {url, ext} */
+CONFIG.songs.forEach((s,i)=>{
+  const d=document.createElement('div'); d.className='sc'; d.style.setProperty('--h',[320,270,220,340][i%4]);
+  d.innerHTML=`<div class="cvr"><div class="ph">♪</div><button class="pb" data-i="${i}" aria-label="پخش">▶</button></div><div class="st" dir="auto">${esc(s.title)}</div><div class="sa" dir="auto">${esc(s.artist)}</div><div class="se">${esc(s.tag)}</div>`;
+  $('#songs').appendChild(d);
+  firstImg(s.cover,(url,ext)=>{ covers[i]={url,ext}; const im=new Image(); im.src=url; im.alt=''; $('.cvr',d).insertBefore(im,$('.pb',d)); });
+  $('.pb',d).onclick=e=>{ e.stopPropagation(); togglePlay(i); };
+  d.onclick=()=>openSong(i); });
+function openSong(i){ const s=CONFIG.songs[i];
+  openModal(`<h3 dir="auto" style="padding-left:1.4em">${esc(s.title)}</h3><div style="opacity:.8;margin:-.4em 0 .6em;font-size:.9em" dir="auto">${esc(s.artist)}</div>
+    <div id="sCover"></div><div class="chip" style="margin:.2em 0 .7em;font-size:.85em">${esc(s.tag)}</div><div class="tx">${esc(s.note)}</div>
+    <div class="dlrow"><button class="btn sm" id="sPlay">${(cur===i&&!AU.paused)?'❚❚ توقف':'▶ پخش'}</button><button id="sDlA">⬇ دانلود آهنگ</button><button id="sDlC">🖼 دانلود کاور</button></div>`);
+  if(covers[i]) $('#sCover').innerHTML=`<img class="cimg" style="border-radius:14px;max-width:70%" src="${covers[i].url}" alt="">`;
+  $('#sPlay').onclick=()=>{ togglePlay(i); setTimeout(()=>{const b=$('#sPlay'); if(b) b.textContent=(cur===i&&!AU.paused)?'❚❚ توقف':'▶ پخش';},200); };
+  $('#sDlA').onclick=()=>dlSong(i); $('#sDlC').onclick=()=>{ if(covers[i]) dlUrl(covers[i].url,s.title+' - cover'+covers[i].ext); else toast('کاور این آهنگ هنوز اضافه نشده'); }; }
+function dlSong(i){ const s=CONFIG.songs[i]; if(cur!==i){ selectTrack(i,false); }
+  setTimeout(()=>{ if(AU._missing) toast('فایل این آهنگ هنوز اضافه نشده'); else dlUrl(AU.src,s.title+' - '+s.artist+(AU._ext||'.mp3')); },250); }
+function selectTrack(i,play){ const s=CONFIG.songs[i];
+  if(cur!==i){ cur=i; S.track=i; save(); AU.pause(); setAudio(AU,s.file,()=>{ toast('فایل این آهنگ هنوز اضافه نشده ('+s.file.replace(/^assets\//,'')+')'); updPlayer(); }); AU.currentTime=0; }
+  if(play){ stopVoice(); const p=AU.play(); if(p&&p.catch) p.catch(()=>{}); }
+  $('#mp').classList.add('on'); updPlayer(); }
+function togglePlay(i){ if(cur===i&&!AU.paused){ AU.pause(); } else selectTrack(i,true); updPlayer(); }
+function updPlayer(){ const s=CONFIG.songs[cur]; if(!s) return; $('#mpT').textContent=s.title; $('#mpA').textContent=s.artist; const pl=!AU.paused&&!AU._missing;
+  $('#mpPlay').textContent=pl?'❚❚':'▶'; $$('.sc').forEach((c,k)=>{ c.classList.toggle('cur',k===cur); $('.pb',c).textContent=(k===cur&&pl)?'❚❚':'▶'; }); }
+['play','pause','ended','loadedmetadata'].forEach(ev=>AU.addEventListener(ev,updPlayer));
+AU.addEventListener('timeupdate',()=>{ if(AU.duration) $('#mpSeek').value=AU.currentTime/AU.duration*100; });
+$('#mpSeek').oninput=e=>{ if(AU.duration) AU.currentTime=e.target.value/100*AU.duration; };
+$('#mpPlay').onclick=()=>{ if(cur<0) return; togglePlay(cur); };
+$('#mpNext').onclick=()=>{ const n=(cur+1)%CONFIG.songs.length; selectTrack(n,true); };
+$('#mpPrev').onclick=()=>{ const n=(cur-1+CONFIG.songs.length)%CONFIG.songs.length; selectTrack(n,true); };
+$('#mpDl').onclick=()=>{ if(cur>=0) dlSong(cur); };
+if(S.track>=0&&CONFIG.songs[S.track]){ cur=S.track; setAudio(AU,CONFIG.songs[cur].file,()=>{}); $('#mp').classList.add('on'); updPlayer(); }  /* بدون پخش خودکار */
+const sfxBtn=$('#sfxBtn'); const updSfx=()=>{ sfxBtn.textContent=S.sfx?'🔔':'🔕'; sfxBtn.title=S.sfx?'افکت‌های صوتی روشن':'افکت‌های صوتی خاموش'; };
+sfxBtn.onclick=()=>{ S.sfx=S.sfx?0:1; save(); updSfx(); toast(S.sfx?'افکت‌های صوتی ظریف روشن شد':'افکت‌های صوتی خاموش شد'); if(S.sfx) sfx('pop'); }; updSfx();
+
+/* ---------- صفحهٔ ۵: هدیهٔ آخر ---------- */
+const F=CONFIG.final; $('#ftop').textContent=F.top; $('#finalHint').textContent=F.open;
+$('#bigbox').innerHTML=giftSVG('#7a45c9','#ffd98a');
+$('#voiceBtn').textContent='▶ '+F.open;
+const VA=new Audio(); VA.preload='auto'; let voiceInit=false, boxOpen=false, fTimers=[], starsOn=false;
+const WISH=CONFIG.stars.wishes, SPOS=[[22,36],[40,24],[58,38],[76,26],[80,46]];
+(function(){ const sky=$('#fsky'), svg=$('#fsvg'); SPOS.forEach((p,i)=>{ const s=document.createElement('div'); s.className='fstar'; s.dataset.i=i; s.style.left=p[0]+'%'; s.style.top=p[1]+'%'; s.textContent='✦'; sky.appendChild(s);
+  if(i>0) svg.insertAdjacentHTML('beforeend',`<line x1="${SPOS[i-1][0]}" y1="${SPOS[i-1][1]}" x2="${p[0]}" y2="${p[1]}"/>`); }); })();
+function stopVoice(){ if(voiceInit&&!VA.paused){ VA.pause(); $('#voiceBtn').textContent='▶ '+F.open; } }
+function initVoice(){ if(voiceInit) return; voiceInit=true;
+  setAudio(VA,CONFIG.files.voice,()=>{ $('#voiceNote').textContent='فایل صدا هنوز اضافه نشده (assets/voice.mp3) — برای تست، آرزوها شروع می‌شن'; setTimeout(()=>runStars(0),1500); });
+  VA.addEventListener('ended',()=>{ $('#voiceBtn').textContent='▶ دوباره پخش'; runStars(0); });
+  VA.addEventListener('play',()=>{ $('#voiceBtn').textContent='❚❚ توقف'; }); VA.addEventListener('pause',()=>{ if(!VA.ended) $('#voiceBtn').textContent='▶ ادامه'; }); }
+$('#bigbox').onclick=()=>{ if(boxOpen) return; boxOpen=true; $('#bigbox').classList.add('open'); $('#finalHint').style.display='none'; sfx('open');
+  const r=$('#bigbox').getBoundingClientRect(); burst(r.left+r.width/2,r.top+10,['✨','💖','⭐'],10); setTimeout(()=>$('#finalmsg').classList.add('on'),700); };
+$('#voiceBtn').onclick=()=>{ initVoice(); AU.pause(); updPlayer();
+  if(VA.paused){ const p=VA.play(); if(p&&p.catch) p.catch(()=>{}); $('#skipBtn').style.display=''; } else VA.pause(); };
+$('#skipBtn').onclick=()=>{ VA.pause(); runStars(0); };
+const clearF=()=>{ fTimers.forEach(clearTimeout); fTimers=[]; };
+function lightStars(n,cur){ $$('#fsky .fstar').forEach((s,i)=>{ s.classList.toggle('on',i<=n); s.classList.toggle('cur',i===cur); }); $$('#fsvg line').forEach((l,i)=>l.classList.toggle('on',i<n)); }
+function setPanel(html,end){ const p=$('#wpanel'); p.classList.remove('on'); setTimeout(()=>{ p.className='wpanel on'+(end?' end':''); p.innerHTML=html; },end?400:700); }
+function showWish(i){ lightStars(i,i); sfx('star'); setPanel(`<small>آرزوی ${fa(i+1)} از ${fa(WISH.length)} ✦</small>${esc(WISH[i])}`); }
+function showEnd(){ lightStars(WISH.length-1,-1); setPanel(esc(F.last),true); sfx('ok'); S.fin=1; save(); setTimeout(showActions,1200); }
+function showActions(){ const a=$('#factions'); a.classList.add('on'); a.innerHTML=`<button class="btn sm ghost" id="aVoice">🎧 دوباره بشنو</button><button class="btn sm ghost" id="aWish">✨ مرور آرزوها</button><button class="btn sm ghost" id="aHome">🏠 صفحهٔ اول</button><button class="btn sm ghost" id="aDlW">💾 آرزوها</button><button class="btn sm ghost" id="aDlV">⬇ صدا</button>`;
+  $('#aVoice').onclick=()=>{ clearF(); $('#s5').classList.remove('calm'); starsOn=false; $('#factions').classList.remove('on'); $('#wpanel').classList.remove('on'); lightStars(-1,-1); initVoice(); VA.currentTime=0; const p=VA.play(); if(p&&p.catch)p.catch(()=>{}); $('#skipBtn').style.display=''; };
+  $('#aWish').onclick=()=>runStars(0); $('#aHome').onclick=()=>go(0); $('#aDlW').onclick=()=>dlText('آرزوها',WISH.map((t,k)=>`${k+1}) ${t}`).join('\n\n')+'\n\n'+F.last);
+  $('#aDlV').onclick=()=>{ if(voiceInit&&!VA._missing) dlUrl(VA.src,'voice-message'+(VA._ext||'.mp3')); else toast('فایل صدا هنوز اضافه نشده'); }; }
+function runStars(from){ clearF(); starsOn=true; $('#s5').classList.add('calm'); $('#factions').classList.remove('on'); lightStars(-1,-1); let t=1300;
+  for(let i=from;i<WISH.length;i++){ const k=i; fTimers.push(setTimeout(()=>showWish(k),t)); t+=3800+WISH[i].length*55; }
+  fTimers.push(setTimeout(showEnd,t)); }
+$$('#fsky .fstar').forEach(s=>s.onclick=()=>{ if(!starsOn) return; clearF(); showWish(+s.dataset.i); setTimeout(showActions,600); });
+
+/* ---------- ناوبری (برگشت تا صفحهٔ اول همیشه ممکنه) ---------- */
+const ids=['s1','s2','s3','s4','s5']; let curScene=0;
+const dots=$('#dots'); ids.forEach((_,i)=>{const d=document.createElement('i');d.onclick=()=>go(i);dots.appendChild(d);});
+function go(n){
+  if(n<0||n>=ids.length) return; closeModal(); lt.classList.remove('on'); dv.classList.remove('on','open','flip'); curScene=n; clearF();
+  ids.forEach((id,i)=>document.getElementById(id).classList.toggle('active',i===n));
+  $$('i',dots).forEach((d,i)=>d.classList.toggle('a',i===n));
+  $('#nav').classList.toggle('on',n>0); $('#prev').disabled=n<=0; $('#next').disabled=n>=ids.length-1; $('#pgLabel').textContent=`صفحه ${fa(n+1)} از ${fa(ids.length)}`;
+  if(n!==4&&voiceInit&&!VA.paused){ VA.pause(); }
+  if(n===4&&starsOn){ lightStars(WISH.length-1,-1); $('#wpanel').className='wpanel on end'; $('#wpanel').textContent=F.last; showActions(); }
+  if(n>0){ S.scene=n; save(); } updProg(); }
+$('#next').onclick=()=>go(curScene+1); $('#prev').onclick=()=>go(curScene-1);
+updProg(); go(0);
+</script>
+</body>
+</html>
